@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#ffe9e3",
+                    "on-secondary-fixed-variant": "#004a79",
+                    "tertiary-fixed-dim": "#4dd9e4",
+                    "on-tertiary-container": "#004145",
+                    "inverse-surface": "#3a2e29",
+                    "surface-dim": "#ebd6cf",
+                    "inverse-on-surface": "#ffede8",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#00b5c0",
+                    "tertiary-fixed": "#7af4ff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#ffb59c",
+                    "primary-fixed-dim": "#ffb59c",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#fae4dd",
+                    "primary-fixed": "#ffdbcf",
+                    "surface-variant": "#f4ded7",
+                    "secondary-fixed": "#cfe5ff",
+                    "outline-variant": "#dec0b6",
+                    "primary-container": "#ff7f50",
+                    "on-error-container": "#93000a",
+                    "surface": "#fff8f6",
+                    "surface-container-highest": "#f4ded7",
+                    "on-background": "#241915",
+                    "on-primary-fixed": "#380c00",
+                    "surface-container-low": "#fff1ec",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "secondary": "#00629e",
+                    "on-surface-variant": "#57423b",
+                    "secondary-container": "#61b4fe",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002022",
+                    "secondary-fixed-dim": "#9acbff",
+                    "tertiary": "#006970",
+                    "on-primary-container": "#6c2000",
+                    "background": "#fff8f6",
+                    "primary": "#a43c12",
+                    "surface-bright": "#fff8f6",
+                    "surface-tint": "#a43c12",
+                    "on-secondary-container": "#004470",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#001d34",
+                    "outline": "#8b7169",
+                    "on-surface": "#241915",
+                    "on-primary-fixed-variant": "#822800"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xxl": "48px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "container-margin": "16px"
+            },
+            "fontFamily": {
+                    "h1": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bottom-sheet-shadow {
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- Backdrop Simulation (The Search Results Page) -->
+<div class="fixed inset-0 z-0 overflow-y-auto pb-24">
+<!-- TopAppBar (Simulated Background) -->
+<header class="bg-white/80 backdrop-blur-md sticky top-0 left-0 w-full z-10 flex items-center justify-between px-4 h-16 shadow-sm border-b border-orange-100/20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-orange-500">arrow_back</span>
+<h1 class="font-h2 text-h2 text-orange-500 tracking-tight">Explorar</h1>
+</div>
+<span class="material-symbols-outlined text-orange-500">filter_list</span>
+</header>
+<!-- Simulated Search Results -->
+<main class="p-gutter grid grid-cols-2 gap-gutter">
+<div class="bg-white rounded-lg shadow-sm p-base flex flex-col gap-xs">
+<div class="aspect-square bg-surface-container rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Minimalist white wristwatch on a sand-colored surface with soft natural lighting and coastal aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmEjQm-P0ucJjbgca7x-VBki516IpigfmWr0x0GmOKAQib_flQ9_mPAKw2AUL8xQU40X4esnDINjQLpAyfMsk8ojmIPTc7MQZLJqtufaIDZsBisRFpcPMs8SRfplMZrRG0FnvX9hEmuTaGlzmdxX82k-2utWSbmnYecsRF_4Yn0wTogZ9KdHxuS1fJ1S_tkMGL3hhDljwX26Dx8vprrUopeCDEfwFNKi7P2qPZP8IBiKrjImQMSpcx67wDA3KzfWcqdcC4jY9TBuY"/>
+</div>
+<p class="font-label-md text-label-md mt-sm">Reloj Minimalista</p>
+<p class="text-primary font-h3 text-h3">$120</p>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-base flex flex-col gap-xs">
+<div class="aspect-square bg-surface-container rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Handcrafted ceramic mug with organic textures sitting on a sun-drenched wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBskGzlGAmmH-JiB7j5BYcLj5wwTGYH5cOizRw-5wzl9E8-gsi0SBdN4lPbCd68evF35bejQiCSQGR8U8-18LM7SNeGphrdSVtpnYD5I6PmzGD8_rTyrNC5Ad8ddsIZUCD_-mledm08Qa9lQDCSP206HFYpJZ-ylEh0Kt35OH1yQT3H7sr0pH6i3jPeN7fLxAm31G0VVDeG7wFEFgvLWqDGnHlqaz6uxZoHAZ5eg-dvo0HN97PtdiQHNSY7BKBTCsI_GFs6BytcijU"/>
+</div>
+<p class="font-label-md text-label-md mt-sm">Taza de Cerámica</p>
+<p class="text-primary font-h3 text-h3">$45</p>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-base flex flex-col gap-xs">
+<div class="aspect-square bg-surface-container rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Premium wireless headphones on a clean beige background with soft ambient shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl_6FVhOxX6Dv5zwmXPa9LUVavgmDEjGxWdh6Oj8oSDnXeaqHqCfq-aYieLR9O3dmiPrsal8KicN4WmZU77as37HXl-uESgpHv9epLlrka9oeIqcbJHASoE7OmwJhTtTpD2m2y_V2OVIjb32pAufJ2MnmZ2suUUix-j5MnIRwWmCTZJJzn5HQSUt3rfbqgz7m0s2q61kQ7Ze5W3Ws_pVmAAcLX7rpaE9G1QyEZUkcdMTzIUznD7mO5EK6CBIiqcU6NgPfDNf-Ttu4"/>
+</div>
+<p class="font-label-md text-label-md mt-sm">Auriculares Pro</p>
+<p class="text-primary font-h3 text-h3">$299</p>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-base flex flex-col gap-xs opacity-40">
+<div class="aspect-square bg-surface-container rounded-lg"></div>
+</div>
+</main>
+</div>
+<!-- Overlay / Backdrop -->
+<div class="fixed inset-0 bg-on-background/30 backdrop-blur-sm z-40"></div>
+<!-- Filter Bottom Sheet -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex flex-col bg-white rounded-t-xl bottom-sheet-shadow max-h-[813px] transition-transform duration-300">
+<!-- Handle for dragging feel -->
+<div class="w-full flex justify-center py-sm">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full opacity-50"></div>
+</div>
+<!-- Header -->
+<div class="flex items-center justify-between px-xl pb-md">
+<h2 class="font-h2 text-h2 text-on-surface">Filtrar resultados</h2>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Content Area (Scrollable) -->
+<div class="px-xl pb-xxl overflow-y-auto flex flex-col gap-xl">
+<!-- Price Range Section -->
+<section class="flex flex-col gap-md">
+<h3 class="font-h3 text-h3 text-on-surface-variant">Rango de precio</h3>
+<div class="px-base">
+<!-- Custom Slider Visual -->
+<div class="relative w-full h-1.5 bg-surface-container rounded-full mb-lg">
+<div class="absolute left-[20%] right-[30%] h-full bg-primary-container rounded-full"></div>
+<div class="absolute left-[20%] top-1/2 -translate-y-1/2 w-6 h-6 bg-white border-2 border-primary-container rounded-full shadow-sm"></div>
+<div class="absolute right-[30%] top-1/2 -translate-y-1/2 w-6 h-6 bg-white border-2 border-primary-container rounded-full shadow-sm"></div>
+</div>
+<!-- Input Fields -->
+<div class="flex items-center gap-md">
+<div class="flex-1">
+<label class="font-label-sm text-label-sm text-outline mb-xs block px-sm">Mínimo</label>
+<div class="flex items-center bg-surface-container-low border border-outline-variant rounded-full px-md py-sm">
+<span class="text-on-surface-variant mr-xs">$</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 w-full text-body-md font-medium" type="text" value="50"/>
+</div>
+</div>
+<div class="w-4 h-0.5 bg-outline-variant mt-lg"></div>
+<div class="flex-1">
+<label class="font-label-sm text-label-sm text-outline mb-xs block px-sm">Máximo</label>
+<div class="flex items-center bg-surface-container-low border border-outline-variant rounded-full px-md py-sm">
+<span class="text-on-surface-variant mr-xs">$</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 w-full text-body-md font-medium" type="text" value="500"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Selector Section -->
+<section class="flex flex-col gap-md">
+<h3 class="font-h3 text-h3 text-on-surface-variant">Categoría</h3>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low border border-outline-variant rounded-full px-md py-lg text-body-md focus:ring-2 focus:ring-primary-container/30 focus:border-primary outline-none">
+<option>Todas las categorías</option>
+<option>Moda y Accesorios</option>
+<option>Hogar y Decoración</option>
+<option>Tecnología</option>
+<option>Arte y Diseño</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">keyboard_arrow_down</span>
+</div>
+<!-- Quick Chips -->
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-xs bg-secondary text-white rounded-full font-label-md text-label-md">Tendencias</button>
+<button class="px-md py-xs bg-surface-container text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-variant">Sustentable</button>
+<button class="px-md py-xs bg-surface-container text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-variant">Artesanal</button>
+</div>
+</section>
+<!-- Condition Section -->
+<section class="flex flex-col gap-md">
+<h3 class="font-h3 text-h3 text-on-surface-variant">Estado del producto</h3>
+<div class="flex flex-col gap-sm">
+<label class="flex items-center justify-between p-md bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="font-label-md text-label-md">Todos</span>
+<input checked="" class="w-5 h-5 text-primary border-outline-variant focus:ring-primary-container" name="condition" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-md bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="font-label-md text-label-md">Nuevo</span>
+<input class="w-5 h-5 text-primary border-outline-variant focus:ring-primary-container" name="condition" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-md bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="font-label-md text-label-md">Usado</span>
+<input class="w-5 h-5 text-primary border-outline-variant focus:ring-primary-container" name="condition" type="radio"/>
+</label>
+</div>
+</section>
+</div>
+<!-- Footer Buttons -->
+<div class="p-xl border-t border-surface-container flex items-center gap-xl bg-white/50 backdrop-blur-sm">
+<button class="text-on-surface-variant font-label-md text-label-md underline underline-offset-4 active:scale-95 transition-transform">Limpiar</button>
+<button class="flex-1 bg-primary-container text-white py-lg rounded-full font-label-md text-label-md shadow-lg shadow-primary-container/20 active:scale-95 transition-transform">Aplicar filtros</button>
+</div>
+</div>
+<!-- Hidden Navigation Bar (Background Context) -->
+<nav class="fixed bottom-0 left-0 w-full z-10 flex justify-around items-center px-6 py-3 pb-safe bg-white/90 backdrop-blur-lg rounded-t-xl shadow-lg border-t border-orange-100/10">
+<div class="flex flex-col items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-orange-500 bg-orange-50 rounded-full px-3 py-1">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-medium">Explorar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-[10px] font-medium">Carrito</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Favoritos</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</div>
+</nav>
+</body></html>

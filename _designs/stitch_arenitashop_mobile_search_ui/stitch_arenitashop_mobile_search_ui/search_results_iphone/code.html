@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f5efe6; /* Sand beige as requested */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#ffe9e3",
+                    "on-secondary-fixed-variant": "#004a79",
+                    "tertiary-fixed-dim": "#4dd9e4",
+                    "on-tertiary-container": "#004145",
+                    "inverse-surface": "#3a2e29",
+                    "surface-dim": "#ebd6cf",
+                    "inverse-on-surface": "#ffede8",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#00b5c0",
+                    "tertiary-fixed": "#7af4ff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#ffb59c",
+                    "primary-fixed-dim": "#ffb59c",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#fae4dd",
+                    "primary-fixed": "#ffdbcf",
+                    "surface-variant": "#f4ded7",
+                    "secondary-fixed": "#cfe5ff",
+                    "outline-variant": "#dec0b6",
+                    "primary-container": "#ff7f50",
+                    "on-error-container": "#93000a",
+                    "surface": "#fff8f6",
+                    "surface-container-highest": "#f4ded7",
+                    "on-background": "#241915",
+                    "on-primary-fixed": "#380c00",
+                    "surface-container-low": "#fff1ec",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "secondary": "#00629e",
+                    "on-surface-variant": "#57423b",
+                    "secondary-container": "#61b4fe",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002022",
+                    "secondary-fixed-dim": "#9acbff",
+                    "tertiary": "#006970",
+                    "on-primary-container": "#6c2000",
+                    "background": "#fff8f6",
+                    "primary": "#a43c12",
+                    "surface-bright": "#fff8f6",
+                    "surface-tint": "#a43c12",
+                    "on-secondary-container": "#004470",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#001d34",
+                    "outline": "#8b7169",
+                    "on-surface": "#241915",
+                    "on-primary-fixed-variant": "#822800"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xxl": "48px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "container-margin": "16px"
+            },
+            "fontFamily": {
+                    "h1": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24 max-w-[375px] mx-auto overflow-x-hidden">
+<!-- Top Navigation Bar & Search -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm border-b border-orange-100/20 max-w-[375px] mx-auto h-16 flex items-center px-4 justify-between gap-3">
+<button class="active:scale-95 transition-transform duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-500">arrow_back</span>
+</button>
+<div class="flex-1 relative flex items-center">
+<div class="w-full h-11 bg-surface-container-low rounded-full px-4 flex items-center gap-2 border border-primary-container/20 ring-2 ring-primary-container/10">
+<span class="material-symbols-outlined text-secondary text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-on-surface p-0" readonly="" type="text" value="iPhone"/>
+<button class="flex items-center justify-center p-1 bg-outline-variant/20 rounded-full">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">close</span>
+</button>
+</div>
+</div>
+<button class="w-11 h-11 flex items-center justify-center text-orange-500 hover:bg-orange-50 active:scale-95 transition-all rounded-full">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</header>
+<!-- Filter Chips -->
+<div class="mt-16 pt-4 px-4 overflow-x-auto flex gap-2 hide-scrollbar whitespace-nowrap">
+<button class="px-4 py-2 rounded-full bg-secondary text-white font-label-md flex items-center gap-1 shadow-sm active:scale-95 transition-transform">
+<span>Precio ↓</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 text-on-surface-variant font-label-md active:scale-95 transition-transform">
+<span>Categoría</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 text-on-surface-variant font-label-md active:scale-95 transition-transform">
+<span>Ciudad</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 text-on-surface-variant font-label-md active:scale-95 transition-transform">
+<span>Nuevo/Usado</span>
+</button>
+</div>
+<!-- Subheader -->
+<div class="px-4 py-4">
+<h2 class="font-h3 text-on-background">34 resultados para <span class="text-primary">iPhone</span></h2>
+</div>
+<!-- Results Grid -->
+<main class="px-4 grid grid-cols-2 gap-4">
+<!-- Card 1 -->
+<div class="bg-white rounded-lg p-2 shadow-[0_8px_24px_rgba(0,0,0,0.05)] flex flex-col gap-2 active:scale-[0.98] transition-transform group">
+<div class="aspect-square rounded-lg overflow-hidden relative">
+<img alt="iPhone close up" class="w-full h-full object-cover" data-alt="Modern sleek smartphone with a glossy glass back reflecting soft warm sunset light on a sandy beach background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBr-4m9mfR_Tw2uLOL9Vt44ZX30Y4EmU79b6npyVyEfZuDC40RRH98WLBGOW41c6KkR_pKYvvDcUGoUP5-B5-Q5lIdvyW1vhvwayS5MEshIqJniI1ut0l2piNBjW5xGFJkHgvMyWlBph5MgsCgo5SJ759AsFs6W7mhTESQNhgsQv5pIfzdgn56JJq7QM_BS3DY-yL4KtKUn6GypSFjrHGOBre9AseZ0nv0AJIrzHBXx2JKQY0sZfK9y71_19HdNc_4z9bqmCKxwvY"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="px-1 flex flex-col gap-1">
+<h3 class="font-label-md text-on-surface leading-tight line-clamp-1">iPhone 15 Pro Max</h3>
+<p class="font-h2 text-primary-container">$1,199</p>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">San Diego, CA</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white rounded-lg p-2 shadow-[0_8px_24px_rgba(0,0,0,0.05)] flex flex-col gap-2 active:scale-[0.98] transition-transform">
+<div class="aspect-square rounded-lg overflow-hidden relative">
+<img alt="Smartphone display" class="w-full h-full object-cover" data-alt="Minimalist smartphone on a wooden table with soft focus beach bokeh and ocean blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC4W_eDpFQ2Ay-VMWZiw4YUWb4gI4IRw6Lb1TZbsE8Vd9uTUipAPD0AfQom2cev-A3YcD-v6s2gDBRbNv_Ki6ijpNR2aJCzn0yKfSdl-vnJvSAIxZT8_pKVCR8Wzzn-XqcGU1W7xB5nExebxqR-STW6_TIptZb1xEL5M1CYfXZfpoteMIdy4hCrH19-049SU1ZvGFYtgv5Ynmn_pysAjND2luhaeFv0FFW0UtcMQh5Y8EOXFTVPeT-jdMlZN0qu1ZiF-cUsxLOEjA"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1 flex flex-col gap-1">
+<h3 class="font-label-md text-on-surface leading-tight line-clamp-1">iPhone 14 Plus</h3>
+<p class="font-h2 text-primary-container">$899</p>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Miami, FL</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white rounded-lg p-2 shadow-[0_8px_24px_rgba(0,0,0,0.05)] flex flex-col gap-2 active:scale-[0.98] transition-transform">
+<div class="aspect-square rounded-lg overflow-hidden relative">
+<img alt="iPhone 13" class="w-full h-full object-cover" data-alt="Reflective metallic phone back in a teal color palette under bright airy light with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmheFS69m9FwzR6-EmYUWeScYz-gSOUsnwm-o6OETwFi6nxYcv67O87lmJ-eZAGTv5tP--jnI5RMl_HDPoy8PhlFR94_KlJMrj7QAslHFHj2RLTDuwNsAvwORRqcJlk-C-V0UIT6e3Hs9EgdOaYw-oi3VKS6BDX1PkvzHfWbefvyMkR92TMbcfHYgEPDItxedqNatrKW8H6JLKngeWdShZcP6j2kkoiN8QMkR9FoDDNUFSLJTlkqkOm0tY4JffHmJxKyxS_1gJIr8"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="px-1 flex flex-col gap-1">
+<h3 class="font-label-md text-on-surface leading-tight line-clamp-1">iPhone 13 Ceramic</h3>
+<p class="font-h2 text-primary-container">$650</p>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Cancun, MX</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white rounded-lg p-2 shadow-[0_8px_24px_rgba(0,0,0,0.05)] flex flex-col gap-2 active:scale-[0.98] transition-transform">
+<div class="aspect-square rounded-lg overflow-hidden relative">
+<img alt="iPhone box" class="w-full h-full object-cover" data-alt="Product packaging for a high-end tech device in a clean white setting with natural warm sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8_56ZfhqSt51b4fh5Sc8Mjv5OAwLEYY_Jml3urFc_VZONTiZq7MgIYlhdc_Qw1GNG6ZEo0h7UASIXqykEHPH4yczRDiR6iDWIV2CC1iNraxhtwtAuv9CcFRSLDwEsV4CdIj2UbUkxLHljnoB1JFSNtagZQuqGwX2hUnbbtso_SxnVY0wraCCeA4e-nUL6e7FlfU-i9mzJdp57-srn_AWbiLcmf2dF03GnEFmHOEm4QYaZauqwspDy_VMJ9Hoq9N_208PZIlnb45Q"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="px-1 flex flex-col gap-1">
+<h3 class="font-label-md text-on-surface leading-tight line-clamp-1">iPhone 15 Case Coral</h3>
+<p class="font-h2 text-primary-container">$45</p>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Malibu, CA</span>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-white rounded-lg p-2 shadow-[0_8px_24px_rgba(0,0,0,0.05)] flex flex-col gap-2 active:scale-[0.98] transition-transform">
+<div class="aspect-square rounded-lg overflow-hidden relative">
+<img alt="Macbook Pro" class="w-full h-full object-cover" data-alt="Laptop on a coastal workspace with sea view and morning sunrise light through a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdAig6dB_8usylijvFH75yj-kpE1o5wOMuAP-I34EMGByAGVdf2uTDkdKH5pBMoz9T2wS8xycfyf23D9xxw4EvpysKykkjomeycYf2W_XykigkGkJi8I8mSeSgaiCOjq3vun_lMOm3NbkSsHPLMUSERSFP_XC8ogz-t7mlNgh4awUu42sYd53KaiQ88mtLooFzg2yhaXa66DangrVZgJ6psAKT51M5cMGOLZTKOCQSNjgtFP2WZx3Ba4Lgwvl421H6XzZuz9xW-Us"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="px-1 flex flex-col gap-1">
+<h3 class="font-label-md text-on-surface leading-tight line-clamp-1">MacBook related item</h3>
+<p class="font-h2 text-primary-container">$1,299</p>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Ibiza, ES</span>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-white rounded-lg p-2 shadow-[0_8px_24px_rgba(0,0,0,0.05)] flex flex-col gap-2 active:scale-[0.98] transition-transform">
+<div class="aspect-square rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-orange-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-300 text-4xl">inventory_2</span>
+</div>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="px-1 flex flex-col gap-1">
+<h3 class="font-label-md text-on-surface leading-tight line-clamp-1">Used iPhone 12 Mini</h3>
+<p class="font-h2 text-primary-container">$340</p>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Local Pick-up</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 py-3 pb-safe bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg shadow-[0_-8px_30px_rgb(0,0,0,0.04)] rounded-t-[32px] max-w-[375px] mx-auto">
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Inicio</span>
+</div>
+<!-- Active Tab: Explorar -->
+<div class="flex flex-col items-center justify-center text-orange-500 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/40 rounded-full px-3 py-1 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Explorar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Carrito</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Favoritos</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Perfil</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #a43c12;
+  --color-primary-foreground: #ffffff;
+  --color-primary-container: #ff7f50;
+  --color-primary-container-foreground: #6c2000;
+
+  --color-secondary: #00629e;
+  --color-secondary-foreground: #ffffff;
+  --color-secondary-container: #61b4fe;
+  --color-secondary-container-foreground: #004470;
+
+  --color-background: #fff8f6;
+  --color-foreground: #241915;
+
+  --color-surface: #ffffff;
+  --color-surface-dim: #ebd6cf;
+  --color-surface-container: #ffe9e3;
+  --color-surface-container-high: #fae4dd;
+
+  --color-border: #dec0b6;
+  --color-outline: #8b7169;
+
+  --color-error: #ba1a1a;
+  --color-error-foreground: #ffffff;
+
+  --font-sans: var(--font-jakarta), sans-serif;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+}
+
+:root {
+  --background: #fff8f6;
+  --foreground: #241915;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Utilities based on DESIGN.md */
+@layer utilities {
+  .shadow-ambient {
+    box-shadow: 0 4px 20px -2px rgba(74, 69, 64, 0.08);
+  }
+}

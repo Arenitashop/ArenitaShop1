@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#154b6d",
+                    "inverse-primary": "#ffb59e",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#001e31",
+                    "on-background": "#1f1b15",
+                    "tertiary-fixed-dim": "#f0bd8b",
+                    "primary-container": "#e8714a",
+                    "outline-variant": "#dec0b8",
+                    "surface-container-low": "#fbf2e8",
+                    "surface-tint": "#a33e1b",
+                    "on-surface": "#1f1b15",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#f0e7dd",
+                    "on-primary": "#ffffff",
+                    "primary": "#a33e1b",
+                    "surface-dim": "#e1d9cf",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#57423c",
+                    "on-secondary-container": "#2b5c80",
+                    "surface-variant": "#eae1d7",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#b98b5d",
+                    "tertiary-fixed": "#ffdcbd",
+                    "inverse-surface": "#343029",
+                    "secondary-container": "#a5d4fd",
+                    "surface-bright": "#fff8f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#f6ece3",
+                    "surface-container-highest": "#eae1d7",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#3a0b00",
+                    "inverse-on-surface": "#f8efe5",
+                    "background": "#fff8f3",
+                    "secondary": "#326286",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#9dcbf4",
+                    "on-tertiary-container": "#442601",
+                    "secondary-fixed": "#cce5ff",
+                    "primary-fixed": "#ffdbd0",
+                    "on-primary-fixed-variant": "#822704",
+                    "surface": "#fff8f3",
+                    "on-tertiary-fixed": "#2c1600",
+                    "tertiary": "#7d562d",
+                    "primary-fixed-dim": "#ffb59e",
+                    "on-primary-container": "#571500",
+                    "on-tertiary-fixed-variant": "#623f18",
+                    "outline": "#8a726a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "3xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "sm": "12px",
+                    "xl": "64px",
+                    "md": "24px",
+                    "base": "8px",
+                    "margin": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Epilogue"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Epilogue"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Epilogue"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f3; /* Warm Sand */
+        }
+        .coral-gradient {
+            background: linear-gradient(135deg, #e8714a 0%, #a33e1b 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface min-h-screen flex flex-col justify-between antialiased">
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center px-margin pt-xl pb-md w-full max-w-[375px] mx-auto">
+<!-- Header / Logo Area -->
+<div class="text-center mb-xl">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-primary-fixed mb-sm shadow-sm">
+<span class="material-symbols-outlined text-primary text-headline-xl" data-icon="light_mode" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+</div>
+<h1 class="font-display-lg text-headline-xl text-primary mb-xs tracking-tight italic">ArenitaShop</h1>
+<p class="font-label-md text-on-surface-variant">Compra y vende cerca de ti</p>
+</div>
+<!-- Login Form -->
+<form class="w-full space-y-md">
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-on-surface-variant px-xs" for="email">Correo electrónico</label>
+<div class="relative">
+<input class="w-full px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-2xl focus:border-secondary focus:ring-4 focus:ring-secondary/5 transition-all outline-none placeholder:text-outline" id="email" placeholder="tu@email.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-on-surface-variant px-xs" for="password">Contraseña</label>
+<div class="relative">
+<input class="w-full px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-2xl focus:border-secondary focus:ring-4 focus:ring-secondary/5 transition-all outline-none placeholder:text-outline" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-outline-variant hover:text-secondary transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+<div class="text-right">
+<a class="font-label-md text-secondary hover:text-on-secondary-container transition-colors" href="#">¿Olvidaste tu contraseña?</a>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full coral-gradient text-on-primary font-headline-md py-sm rounded-2xl shadow-lg shadow-primary/20 active:scale-95 transition-transform duration-150" type="submit">
+                Iniciar Sesión
+            </button>
+</form>
+<!-- Divider -->
+<div class="w-full flex items-center gap-base my-xl">
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+<span class="font-label-md text-outline">o continúa con</span>
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+</div>
+<!-- OAuth Section -->
+<div class="w-full">
+<button class="w-full flex items-center justify-center gap-sm px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-2xl hover:bg-surface-container transition-colors active:scale-95 duration-150">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpFvDmR8E4WdH_lI9nmbmJ8s-FgDej9rSEGw2-k3CnqRAYxE5-RpY4wSoa8ZgGOQVQrt6LwPQXa3QB3UXRIiuEFVUBVs0LKuIP5TaZG13P183_beeCdkkPpUOeyCJ6213M5jBQYozH6-J6lDgHUXm4RZU1EKpuqW0C1h2NMyL8Apxd4vornHy72O0iLJ3rZlKY2yUzLjRS_JpIXVMR_KV1Hqg-216g6BxrObQr3u21P_QJxuMAD1ZYWai95lln2zo7vkBvnp5IiM7g"/>
+<span class="font-label-md text-on-surface">Continuar con Google</span>
+</button>
+</div>
+</main>
+<!-- Bottom Footer Section -->
+<footer class="w-full max-w-[375px] mx-auto pb-lg px-margin text-center">
+<p class="font-body-md text-on-surface-variant">
+            ¿No tienes cuenta? 
+            <a class="font-label-md text-primary font-bold hover:underline" href="#">Regístrate</a>
+</p>
+</footer>
+<!-- Subtle background decoration -->
+<div class="fixed top-0 right-0 -z-10 opacity-20">
+<div class="w-64 h-64 rounded-full bg-primary-fixed blur-3xl -mr-32 -mt-32"></div>
+</div>
+<div class="fixed bottom-0 left-0 -z-10 opacity-30">
+<div class="w-80 h-80 rounded-full bg-secondary-container blur-[100px] -ml-40 -mb-40"></div>
+</div>
+</body></html>

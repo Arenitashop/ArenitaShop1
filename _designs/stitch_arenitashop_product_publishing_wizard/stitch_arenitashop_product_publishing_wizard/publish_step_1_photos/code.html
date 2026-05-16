@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#fae4dd",
+                    "inverse-primary": "#ffb59c",
+                    "on-primary-fixed-variant": "#822800",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#e5e2dd",
+                    "primary": "#a43c12",
+                    "on-surface-variant": "#57423b",
+                    "tertiary": "#006970",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#241915",
+                    "primary-fixed-dim": "#ffb59c",
+                    "primary-fixed": "#ffdbcf",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#fff1ec",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#ffede8",
+                    "surface-tint": "#a43c12",
+                    "surface-dim": "#ebd6cf",
+                    "surface-container": "#ffe9e3",
+                    "on-background": "#241915",
+                    "background": "#fff8f6",
+                    "on-secondary-fixed-variant": "#474743",
+                    "secondary-fixed": "#e5e2dd",
+                    "secondary": "#5f5e5b",
+                    "tertiary-container": "#00b5c0",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#7af4ff",
+                    "on-tertiary-fixed": "#002022",
+                    "surface": "#fff8f6",
+                    "outline": "#8b7169",
+                    "surface-container-highest": "#f4ded7",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#4dd9e4",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "on-primary-container": "#6c2000",
+                    "primary-container": "#ff7f50",
+                    "outline-variant": "#dec0b6",
+                    "on-primary-fixed": "#380c00",
+                    "surface-variant": "#f4ded7",
+                    "on-secondary-fixed": "#1c1c19",
+                    "surface-bright": "#fff8f6",
+                    "inverse-surface": "#3a2e29",
+                    "on-secondary-container": "#656461",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#004145",
+                    "secondary-fixed-dim": "#c9c6c2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "12px",
+                    "xl": "32px",
+                    "container-margin": "20px",
+                    "xs": "4px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            width: 1em;
+            height: 1em;
+        }
+        body {
+            background-color: #F5F2ED;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md text-on-surface">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 left-0 z-50 bg-[#F5F2ED] dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800 shadow-sm flex justify-between items-center w-full px-5 py-3 h-16">
+<div class="flex items-center gap-4">
+<button class="transition-colors duration-200 hover:bg-stone-100 dark:hover:bg-stone-800 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[#FF7F50] dark:text-orange-400" data-icon="close">close</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-semibold text-stone-900 dark:text-stone-50 text-md">Publicar producto</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-md text-stone-500">1 de 5</span>
+<button class="transition-colors duration-200 hover:bg-stone-100 dark:hover:bg-stone-800 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-stone-500" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="flex-1 mt-16 mb-24 px-container-margin pt-md">
+<!-- Progress Bar -->
+<div class="w-full bg-[#E0DDD8] h-2 rounded-full mb-lg overflow-hidden">
+<div class="bg-primary-container h-full w-1/5 rounded-full transition-all duration-500"></div>
+</div>
+<!-- Step Heading -->
+<section class="mb-lg">
+<h2 class="font-headline-lg text-on-surface mb-xs">Fotos del producto</h2>
+<p class="font-body-md text-on-surface-variant">La primera foto será la portada de tu publicación.</p>
+</section>
+<!-- Bento Grid Photo Upload -->
+<div class="grid grid-cols-2 gap-md auto-rows-fr">
+<!-- Primary Upload Box -->
+<div class="col-span-2 aspect-square md:aspect-video bg-white dark:bg-stone-900 border-2 border-dashed border-outline-variant rounded-2xl flex flex-col items-center justify-center gap-md transition-all active:scale-[0.98] cursor-pointer group">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary-container group-hover:bg-primary-container group-hover:text-white transition-colors duration-200">
+<span class="material-symbols-outlined text-3xl" data-icon="photo_camera" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-on-surface">Arrastra o toca para subir fotos</p>
+<p class="font-label-sm text-primary-container mt-1">Sube hasta 5 fotos de alta calidad</p>
+</div>
+</div>
+<!-- Secondary Upload Boxes -->
+<div class="aspect-square bg-white dark:bg-stone-900 border-2 border-dashed border-outline-variant rounded-2xl flex items-center justify-center transition-all active:scale-[0.98] cursor-pointer">
+<span class="material-symbols-outlined text-stone-300 text-3xl" data-icon="add">add</span>
+</div>
+<div class="aspect-square bg-white dark:bg-stone-900 border-2 border-dashed border-outline-variant rounded-2xl flex items-center justify-center transition-all active:scale-[0.98] cursor-pointer">
+<span class="material-symbols-outlined text-stone-300 text-3xl" data-icon="add">add</span>
+</div>
+<div class="aspect-square bg-white dark:bg-stone-900 border-2 border-dashed border-outline-variant rounded-2xl flex items-center justify-center transition-all active:scale-[0.98] cursor-pointer">
+<span class="material-symbols-outlined text-stone-300 text-3xl" data-icon="add">add</span>
+</div>
+<div class="aspect-square bg-white dark:bg-stone-900 border-2 border-dashed border-outline-variant rounded-2xl flex items-center justify-center transition-all active:scale-[0.98] cursor-pointer">
+<span class="material-symbols-outlined text-stone-300 text-3xl" data-icon="add">add</span>
+</div>
+</div>
+<!-- Tips Section -->
+<div class="mt-xl p-md bg-surface-container-low rounded-xl border border-outline-variant/30 flex gap-md items-start">
+<span class="material-symbols-outlined text-primary-container" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<div>
+<p class="font-label-md text-on-surface">Consejo de experto</p>
+<p class="font-label-sm text-on-surface-variant mt-1">Las fotos con luz natural y fondo despejado venden hasta un 40% más rápido. Muestra diferentes ángulos del producto.</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center px-5 py-4 bg-white dark:bg-stone-900 border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_15px_rgba(0,0,0,0.04)] rounded-t-2xl">
+<!-- Inactive Action -->
+<button class="flex flex-row items-center justify-center text-stone-600 dark:text-stone-400 px-6 py-3 gap-2 border border-stone-200 dark:border-stone-700 rounded-lg active:scale-95 transition-transform duration-150 font-['Plus_Jakarta_Sans'] font-medium text-sm hover:opacity-90">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+<span>Atrás</span>
+</button>
+<!-- Active Action -->
+<button class="flex flex-row items-center justify-center bg-[#FF7F50] text-white rounded-lg px-6 py-3 gap-2 active:scale-95 transition-transform duration-150 font-['Plus_Jakarta_Sans'] font-medium text-sm hover:opacity-90">
+<span>Continuar</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</nav>
+<!-- Decorative Canvas Elements -->
+<div class="fixed top-24 -right-12 w-64 h-64 bg-primary-container opacity-[0.03] rounded-full blur-3xl pointer-events-none"></div>
+<div class="fixed bottom-32 -left-12 w-48 h-48 bg-tertiary-container opacity-[0.03] rounded-full blur-3xl pointer-events-none"></div>
+</body></html>

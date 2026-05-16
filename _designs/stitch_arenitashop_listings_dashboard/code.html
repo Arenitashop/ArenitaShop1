@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#241915",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-surface-variant": "#57423b",
+                        "surface": "#fff8f6",
+                        "tertiary-container": "#00b5c0",
+                        "on-secondary-container": "#616363",
+                        "surface-container": "#ffe9e3",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#dec0b6",
+                        "primary-fixed": "#ffdbcf",
+                        "error": "#ba1a1a",
+                        "secondary": "#5d5f5f",
+                        "surface-container-high": "#fae4dd",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-primary-fixed": "#380c00",
+                        "surface-tint": "#a43c12",
+                        "primary": "#a43c12",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#f4ded7",
+                        "secondary-container": "#dfe0e0",
+                        "on-secondary-fixed-variant": "#454747",
+                        "inverse-surface": "#3a2e29",
+                        "outline": "#8b7169",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-container": "#6c2000",
+                        "tertiary": "#006970",
+                        "primary-fixed-dim": "#ffb59c",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "surface-bright": "#fff8f6",
+                        "on-tertiary-fixed": "#002022",
+                        "surface-container-highest": "#f4ded7",
+                        "primary-container": "#ff7f50",
+                        "surface-container-low": "#fff1ec",
+                        "on-background": "#241915",
+                        "on-tertiary-container": "#004145",
+                        "inverse-on-surface": "#ffede8",
+                        "inverse-primary": "#ffb59c",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#e2e2e2",
+                        "background": "#fff8f6",
+                        "tertiary-fixed": "#7af4ff",
+                        "tertiary-fixed-dim": "#4dd9e4",
+                        "surface-dim": "#ebd6cf",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "12px",
+                        "stack-padding": "16px",
+                        "card-inner-padding": "12px",
+                        "margin-side": "16px"
+                    },
+                    "fontFamily": {
+                        "price-display": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "price-display": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#F5F1E9] text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#F5F1E9] border-b border-stone-200 docked full-width top-0 flex items-center px-4 h-16 w-full sticky z-40">
+<button class="transition-transform active:scale-95 text-[#FF7F50] mr-4">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-lg text-on-surface">Mis publicaciones</h1>
+</header>
+<!-- Navigation Tabs (Derived from NavigationDrawer data) -->
+<nav class="bg-[#F5F1E9] sticky top-16 z-30 flex px-4 gap-6 border-b border-stone-200">
+<button class="py-4 font-['Plus_Jakarta_Sans'] font-medium text-sm text-[#FF7F50] border-b-2 border-[#FF7F50] relative transition-colors">
+            Activas (12)
+        </button>
+<button class="py-4 font-['Plus_Jakarta_Sans'] font-medium text-sm text-stone-500 hover:text-stone-700 transition-colors">
+            Vendidas (8)
+        </button>
+<button class="py-4 font-['Plus_Jakarta_Sans'] font-medium text-sm text-stone-500 hover:text-stone-700 transition-colors">
+            Borradores (2)
+        </button>
+</nav>
+<!-- Content Canvas -->
+<main class="px-margin-side pt-gutter space-y-3">
+<!-- Listing Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-card-inner-padding shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all active:scale-[0.98]">
+<div class="flex gap-4">
+<div class="w-20 h-20 shrink-0 bg-surface-variant rounded-xl overflow-hidden">
+<img alt="Reloj minimalista" class="w-full h-full object-cover" data-alt="close-up of a premium minimalist wristwatch with a tan leather strap on a soft beige background with morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCJbZ17nwFtjSGywDpj_S1oslBgpEzwrnYp1aUkD18A7nQ1N_y73rn8ns0251rp-s9g32a1IVNqIB6_mY5_1ag5evx75VYJAQw3ekBwXDPieKQvMRigRampkMtQ-ZdlaKTL_shrUCVG5ecEnuy_Kw5_24BTtq9K7x-RHakOlbx_kheblAO09p8x_EBP3YNfqST4utxhpxAfwETyf0mRtB-SWfUdx0dqLr2Mj7-TQesq0K8Dp1khFhrUq6EXOdYoI8qMEscUhl2lbf5"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-md text-body-lg text-on-surface truncate pr-2">Reloj minimalista de cuero</h3>
+<span class="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Activo</span>
+</div>
+<p class="font-price-display text-price-display text-primary-container mb-1">$1,250</p>
+<div class="flex items-center gap-3 text-stone-400 text-[11px] font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="visibility">visibility</span> 234 vistas
+                        </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="favorite">favorite</span> 18 guardados
+                        </span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-stone-50 flex gap-2">
+<button class="flex-1 py-2 px-3 border border-stone-200 rounded-lg text-label-md font-bold text-on-surface hover:bg-stone-50 active:scale-95 transition-all">
+                    Editar
+                </button>
+<button class="flex-1 py-2 px-3 border border-stone-200 rounded-lg text-label-md font-bold text-on-surface hover:bg-stone-50 active:scale-95 transition-all">
+                    Pausar
+                </button>
+<button class="p-2 border border-stone-100 rounded-lg text-error hover:bg-error-container/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</article>
+<!-- Listing Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-card-inner-padding shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all active:scale-[0.98]">
+<div class="flex gap-4">
+<div class="w-20 h-20 shrink-0 bg-surface-variant rounded-xl overflow-hidden">
+<img alt="Tenis deportivos rojos" class="w-full h-full object-cover" data-alt="vibrant red athletic sneakers on a clean white surface with soft ambient shadows and high-end lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeuJZ6a2vK-DNgoZeHzdMozvjXrNWBxOb3tvqJj1sn-8nuuzHWmYj-XgVI06d7HtVBHi7ysq_O2UmCnBIK9dzHUb6CYpsKtv9iM9qhZSySw37SaUmWdXqsFczer3XVsUANQ6GTrFJSkueTi53H_8YUCBYfXyqK-Aho6dwQsM9F56ySEWwjcxDPNAb0MKjc4LwdrndTRahLYrhFtdasUijShZLd5bgW6Ja_mCJ0b3QKuPTRyD3LuZDwnSh-CVd_yUQMr8zdE0evvfGv"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-md text-body-lg text-on-surface truncate pr-2">Tenis deportivos edición especial</h3>
+<span class="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Activo</span>
+</div>
+<p class="font-price-display text-price-display text-primary-container mb-1">$2,400</p>
+<div class="flex items-center gap-3 text-stone-400 text-[11px] font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="visibility">visibility</span> 89 vistas
+                        </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="favorite">favorite</span> 5 guardados
+                        </span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-stone-50 flex gap-2">
+<button class="flex-1 py-2 px-3 border border-stone-200 rounded-lg text-label-md font-bold text-on-surface hover:bg-stone-50 transition-all">
+                    Editar
+                </button>
+<button class="flex-1 py-2 px-3 border border-stone-200 rounded-lg text-label-md font-bold text-on-surface hover:bg-stone-50 transition-all">
+                    Pausar
+                </button>
+<button class="p-2 border border-stone-100 rounded-lg text-error hover:bg-error-container/20 transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</article>
+<!-- Listing Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-card-inner-padding shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all active:scale-[0.98]">
+<div class="flex gap-4">
+<div class="w-20 h-20 shrink-0 bg-surface-variant rounded-xl overflow-hidden">
+<img alt="Audífonos premium" class="w-full h-full object-cover" data-alt="sleek professional overhead headphones in matte black finish on a warm wooden background with golden hour lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcTJ3PWx_4nt7HDEU3cx_xZ5zHCf0D8FRFDE99o5pX4yztq0v2AJXnh1AGSb44SzAVqCuChSFeMZVla-66SzoAOChKICudDJoSxd9-dlxm1UoUVO9JsPBYuutTDIFs5qTDbndK-8uvZxQbWA4FYGHun1qPzk5B2cbtIZV5oBZ968WCPjzKXp3bkSPDzEf8ueRRlsj8Lm5qlznyzkqP4_QVfx10ztqv5mXnKoL6CIWMpzUDCtSh1LuMB20iiFttzNN9xpBsUTkTFvvz"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-md text-body-lg text-on-surface truncate pr-2">Audífonos Noise Cancelling</h3>
+<span class="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Activo</span>
+</div>
+<p class="font-price-display text-price-display text-primary-container mb-1">$3,100</p>
+<div class="flex items-center gap-3 text-stone-400 text-[11px] font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="visibility">visibility</span> 412 vistas
+                        </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="favorite">favorite</span> 34 guardados
+                        </span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-stone-50 flex gap-2">
+<button class="flex-1 py-2 px-3 border border-stone-200 rounded-lg text-label-md font-bold text-on-surface hover:bg-stone-50 transition-all">
+                    Editar
+                </button>
+<button class="flex-1 py-2 px-3 border border-stone-200 rounded-lg text-label-md font-bold text-on-surface hover:bg-stone-50 transition-all">
+                    Pausar
+                </button>
+<button class="p-2 border border-stone-100 rounded-lg text-error hover:bg-error-container/20 transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</article>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 bg-[#FF7F50] text-white flex items-center gap-2 px-6 py-4 rounded-full shadow-[0_8px_24px_rgba(255,127,80,0.3)] font-bold text-sm z-50 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+        Nueva publicación
+    </button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-6 pb-6 pt-2 bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] rounded-t-3xl">
+<div class="flex flex-col items-center justify-center text-stone-400 p-2 hover:opacity-80 transition-all active:scale-90">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#FF7F50] p-2 hover:opacity-80 transition-all active:scale-90">
+<span class="material-symbols-outlined mb-1 fill-icon" data-icon="storefront">storefront</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold">Mis Ventas</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 p-2 hover:opacity-80 transition-all active:scale-90">
+<span class="material-symbols-outlined mb-1" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold">Mensajes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 p-2 hover:opacity-80 transition-all active:scale-90">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold">Perfil</span>
+</div>
+</nav>
+</body></html>

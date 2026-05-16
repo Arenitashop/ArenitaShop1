@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#ffb59c",
+                    "surface-variant": "#e9e1dc",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "on-background": "#1e1b18",
+                    "primary": "#a43c12",
+                    "surface-bright": "#fff8f5",
+                    "on-secondary-fixed-variant": "#004a79",
+                    "tertiary-container": "#a6a4a0",
+                    "surface-container-high": "#efe6e2",
+                    "on-primary-fixed-variant": "#822800",
+                    "tertiary": "#5f5e5b",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "outline": "#8b7169",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#f5ece7",
+                    "secondary": "#00629e",
+                    "background": "#fff8f5",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-secondary-fixed": "#001d34",
+                    "inverse-surface": "#34302c",
+                    "surface-container-highest": "#e9e1dc",
+                    "surface-container-low": "#fbf2ed",
+                    "on-secondary-container": "#004470",
+                    "primary-fixed": "#ffdbcf",
+                    "secondary-fixed-dim": "#9acbff",
+                    "inverse-primary": "#ffb59c",
+                    "error": "#ba1a1a",
+                    "on-surface": "#1e1b18",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#dec0b6",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f8efea",
+                    "on-surface-variant": "#57423b",
+                    "on-tertiary-container": "#3b3a37",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#61b4fe",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#ff7f50",
+                    "surface-tint": "#a43c12",
+                    "surface-dim": "#e1d8d4",
+                    "surface": "#fff8f5",
+                    "secondary-fixed": "#cfe5ff",
+                    "on-primary-container": "#6c2000",
+                    "on-primary-fixed": "#380c00",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "16px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-padding": "20px",
+                    "base": "8px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "h1": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"],
+                    "label-bold": ["Plus Jakarta Sans"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "h1": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F5F2ED;
+            color: #1e1b18;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #FF7F50 !important;
+            box-shadow: 0 0 0 3px rgba(255, 127, 80, 0.1);
+        }
+        .strength-segment {
+            height: 4px;
+            border-radius: 2px;
+            flex: 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background min-h-screen flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-5 h-16 w-full sticky top-0 z-50 bg-[#F5F2ED] dark:bg-slate-950">
+<div class="flex items-center gap-4">
+<button aria-label="Volver" class="hover:bg-white/50 dark:hover:bg-slate-800 rounded-full transition-colors p-2 flex items-center justify-center Active: scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[#FF7F50] dark:text-orange-400" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-2xl tracking-tight text-on-background">Crear cuenta</h1>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-[375px] px-container-padding flex flex-col gap-stack-lg pb-10">
+<!-- Welcome Section -->
+<section class="mt-4">
+<p class="font-body-lg text-on-surface-variant">Únete a la comunidad de ArenitaShop y descubre tesoros costeros únicos.</p>
+</section>
+<!-- Form Section -->
+<form class="flex flex-col gap-stack-md">
+<!-- Full Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-on-surface pl-1" for="full_name">Nombre completo</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline-variant rounded-2xl h-[56px] px-4 font-body-md text-on-surface placeholder:text-outline transition-all" id="full_name" placeholder="Ej. Marina Sol" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-on-surface pl-1" for="email">Correo electrónico</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline-variant rounded-2xl h-[56px] px-4 font-body-md text-on-surface placeholder:text-outline transition-all" id="email" placeholder="hola@arenita.com" type="email"/>
+</div>
+</div>
+<!-- City Dropdown -->
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-on-surface pl-1" for="city">Ciudad</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded-2xl h-[56px] px-4 font-body-md text-on-surface appearance-none transition-all" id="city">
+<option disabled="" selected="" value="">Selecciona tu ciudad</option>
+<option value="barcelona">Barcelona</option>
+<option value="valencia">Valencia</option>
+<option value="malaga">Málaga</option>
+<option value="cadiz">Cádiz</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-on-surface pl-1" for="password">Contraseña</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline-variant rounded-2xl h-[56px] px-4 font-body-md text-on-surface placeholder:text-outline transition-all" id="password" placeholder="••••••••" type="password"/>
+</div>
+<!-- Password Strength Indicator -->
+<div class="flex flex-col gap-1.5 px-1 mt-1">
+<div class="flex gap-2">
+<div class="strength-segment bg-[#FF7F50]"></div>
+<div class="strength-segment bg-[#FF7F50]"></div>
+<div class="strength-segment bg-surface-variant"></div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+<span class="text-label-sm text-on-surface-variant uppercase tracking-wider">Seguridad media</span>
+</div>
+</div>
+</div>
+<!-- Confirm Password -->
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-on-surface pl-1" for="confirm_password">Confirmar contraseña</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline-variant rounded-2xl h-[56px] px-4 font-body-md text-on-surface placeholder:text-outline transition-all" id="confirm_password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Terms and Conditions -->
+<div class="flex items-start gap-3 px-1 mt-2">
+<div class="relative flex items-center pt-1">
+<input class="w-5 h-5 rounded border-outline-variant text-primary-container focus:ring-primary-container" id="terms" type="checkbox"/>
+</div>
+<label class="text-label-sm text-on-surface-variant leading-relaxed" for="terms">
+                    Acepto los <a class="text-primary-container font-bold hover:underline" href="#">Términos y Condiciones</a> y la política de privacidad.
+                </label>
+</div>
+<!-- CTA Button -->
+<button class="mt-4 w-full h-14 bg-primary-container text-white font-label-bold text-body-lg rounded-2xl shadow-[0_8px_20px_rgba(255,127,80,0.24)] active:scale-95 transition-transform duration-200" type="submit">
+                Crear mi cuenta
+            </button>
+</form>
+<!-- Social Register Divider -->
+<div class="flex items-center gap-4 py-2">
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+<span class="text-label-sm text-outline">O regístrate con</span>
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+</div>
+<!-- Social Icons -->
+<div class="flex justify-center gap-stack-md">
+<button class="w-14 h-14 rounded-2xl bg-white border border-outline-variant flex items-center justify-center hover:bg-surface-container-low transition-colors">
+<img alt="Google" class="w-6 h-6" data-alt="colorful google G logo icon on white background minimalist design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDc1pSSicUqc5mesuNTW-alPq1tOWWs6RLESMX-662udjNa4I9OhHSW8-AmCJ7PMm7Zc63Bg98qzn91ChObdD7WE6EpJrSB8qWLSaly3MvVJRn340gR_w5wQagx_8eyqv5GeZqD4XqYVMLHXCdcFlQGBznZoKiyAcJlRQYMheVdJn_csT7OtnWuRvbpu94aUvWHVyZ1ysuvgFDsJ3afAFp4zhdWYxwslZKDyhdPQ8IWpDkeFpZHuSyUGb9knyLq8RrT0CiqjqLMr4"/>
+</button>
+<button class="w-14 h-14 rounded-2xl bg-white border border-outline-variant flex items-center justify-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">social_leaderboard</span>
+</button>
+</div>
+<!-- Footer Footer -->
+<footer class="mt-auto pt-stack-lg text-center">
+<p class="font-body-md text-on-surface-variant">
+                ¿Ya tienes cuenta? 
+                <a class="text-secondary font-bold hover:text-primary-container transition-colors ml-1" href="#">Inicia sesión</a>
+</p>
+</footer>
+</main>
+<!-- Bottom Ornament (Subtle beach texture visual) -->
+<div class="fixed bottom-0 left-0 w-full h-1 pointer-events-none bg-gradient-to-r from-primary-container via-secondary-container to-primary-container opacity-20"></div>
+</body></html>

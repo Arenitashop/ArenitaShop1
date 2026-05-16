@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#a43c12",
+                        "on-background": "#241915",
+                        "primary-fixed": "#ffdbcf",
+                        "secondary": "#00629e",
+                        "on-secondary-fixed-variant": "#004a79",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-primary": "#ffb59c",
+                        "surface-container": "#ffe9e3",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#ffede8",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "background": "#fff8f6",
+                        "inverse-surface": "#3a2e29",
+                        "outline-variant": "#dec0b6",
+                        "on-tertiary-container": "#004145",
+                        "on-tertiary-fixed": "#002022",
+                        "on-surface": "#241915",
+                        "surface-container-low": "#fff1ec",
+                        "on-secondary-fixed": "#001d34",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "surface-container-highest": "#f4ded7",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fff8f6",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-container-high": "#fae4dd",
+                        "tertiary-fixed-dim": "#4dd9e4",
+                        "on-primary-container": "#6c2000",
+                        "on-surface-variant": "#57423b",
+                        "tertiary-container": "#00b5c0",
+                        "primary-container": "#ff7f50",
+                        "on-secondary-container": "#004470",
+                        "primary": "#a43c12",
+                        "surface-variant": "#f4ded7",
+                        "tertiary": "#006970",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#61b4fe",
+                        "surface-bright": "#fff8f6",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#cfe5ff",
+                        "secondary-fixed-dim": "#9acbff",
+                        "tertiary-fixed": "#7af4ff",
+                        "outline": "#8b7169",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#ebd6cf"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "margin": "20px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "caption": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F5F0E1;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface antialiased">
+<!-- Top App Bar -->
+<header class="bg-[#FFFDFB] dark:bg-stone-950 flex justify-between items-center w-full px-5 py-3 h-16 fixed top-0 z-50 border-b border-[#EAE3D2] dark:border-stone-800 shadow-sm shadow-[#4A4540]/5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#FF7F50]" data-icon="storefront">storefront</span>
+<h1 class="text-[#FF7F50] font-black text-2xl tracking-tight">ArenitaShop</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative hover:bg-[#F5EFE1] dark:hover:bg-stone-800 transition-colors p-2 rounded-full active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-stone-500 dark:text-stone-400" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-white"></span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-[#EAE3D2]">
+<img alt="User profile" data-alt="Close-up portrait of a smiling young woman with a warm, friendly expression against a soft-focus seaside sunset background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXWuMyScUQn_2rGZH9V-cC5I72s1MxGUKTmk4SWH9-86Pw8fnw_y971RKk1B46vKg79SlQECJFtPZ02tBYHGBH0d7Hn5oGtC0ltaWd7i5kjpEv2i3eevrZ1_vCoXFIPwj_XyMNSTMN9xu5fLIKh8PnkcwXT4ammziJhgvM3OujyrzhvMgdQKMOeZN1fASb08mRWiD1J43HJULKZS33nJQmltoK6u7L1p_59otr1dY31lplbFahzm07Zkv19M_sv4KV7-XcJgAleXw"/>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-28 px-margin">
+<!-- Search Bar -->
+<section class="mb-6">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" data-icon="search">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-stone-100 border-none rounded-full focus:ring-2 focus:ring-secondary text-body-md placeholder:text-stone-400 transition-all" placeholder="Buscar productos..." type="text"/>
+</div>
+</section>
+<!-- Category Chips -->
+<section class="mb-8 -mx-margin px-margin overflow-x-auto hide-scrollbar">
+<div class="flex gap-3 whitespace-nowrap">
+<button class="px-6 py-2 rounded-full bg-primary-container text-white font-label-md shadow-md active:scale-95 transition-transform">Todos</button>
+<button class="px-6 py-2 rounded-full bg-white text-on-surface-variant font-label-md border border-[#EAE3D2] hover:bg-[#F5EFE1] transition-colors active:scale-95">Electrónica</button>
+<button class="px-6 py-2 rounded-full bg-white text-on-surface-variant font-label-md border border-[#EAE3D2] hover:bg-[#F5EFE1] transition-colors active:scale-95">Ropa</button>
+<button class="px-6 py-2 rounded-full bg-white text-on-surface-variant font-label-md border border-[#EAE3D2] hover:bg-[#F5EFE1] transition-colors active:scale-95">Hogar</button>
+<button class="px-6 py-2 rounded-full bg-white text-on-surface-variant font-label-md border border-[#EAE3D2] hover:bg-[#F5EFE1] transition-colors active:scale-95">Vehículos</button>
+<button class="px-6 py-2 rounded-full bg-white text-on-surface-variant font-label-md border border-[#EAE3D2] hover:bg-[#F5EFE1] transition-colors active:scale-95">Deportes</button>
+</div>
+</section>
+<!-- Section Title & Grid -->
+<section>
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-h3 text-h3 text-on-background">Cerca de ti</h2>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+<span class="text-caption">Filtrar</span>
+</button>
+</div>
+<!-- Product Grid (Bento style 2-column) -->
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Product Card 1 -->
+<article class="bg-white rounded-[24px] shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<div class="relative aspect-square overflow-hidden rounded-t-[24px]">
+<img alt="Minimalist wrist watch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist white analog watch on a light sand background with soft shadows and warm aesthetic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKXorLzqgIhFBZQZZr1VgtvBOnmGwXdX9z4qsv5218140ITOoijHCor3wc_xsD2URaopDtWOYCDu3htRVV6bLti-Hk4c9yffK5uD8m-UptDboJVe-aU7HQhYYCbN9YSAY2sjTgdVl3OY4lRZm5gIURZbRIH1vT_3NJIJ79qFUfTL-ihLdNZhBN3h1rK3lWO_zOZ0T7YJfyngMPgu_NphRmkxQn046nrXvJpPb04MDtHnB55-VnSrMSanwyLHfjeSDEQOfSvYHu5qA"/>
+<button class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-primary-container active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="font-label-md text-on-surface line-clamp-2 mb-1">Reloj Minimalista Blanco</h3>
+<p class="font-h3 text-primary-container mb-2">35.00€</p>
+<div class="flex items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+<span class="text-caption">Valencia • 2h</span>
+</div>
+</div>
+</article>
+<!-- Product Card 2 -->
+<article class="bg-white rounded-[24px] shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<div class="relative aspect-square overflow-hidden rounded-t-[24px]">
+<img alt="Red running shoes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Side profile of bright red athletic running sneakers against a clean, sunlit studio background with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM70gF8fo6VJEj1pOlt3I2XRWV6J2aqKTMtjH8FMWvictuczoSk2kR7O4mffKY4VH9fHXKnh1Bh-OxTYC1vsU-UB4oZRkKYW9FBafdFKOYwxVORUS1l-lkhu6RneFY648g9ddowGwj0FS1Csh8OFkGIFfQw3BR-PcT3zwi9WVoYIAAkO3KnLQr_Rep2CA6RovjdeB8JORom0A4VRNvN7JbAX2IXQFAezmF_GNIzE44okk73Kt7JArQHik90tAW1WY1Z-zA9CpU4rg"/>
+<button class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="font-label-md text-on-surface line-clamp-2 mb-1">Zapatillas Deportivas</h3>
+<p class="font-h3 text-primary-container mb-2">55.00€</p>
+<div class="flex items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+<span class="text-caption">Madrid • 5h</span>
+</div>
+</div>
+</article>
+<!-- Product Card 3 -->
+<article class="bg-white rounded-[24px] shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<div class="relative aspect-square overflow-hidden rounded-t-[24px]">
+<img alt="Premium leather bag" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a high-quality tan leather shoulder bag with gold hardware resting on a light beige wooden chair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDSCA2I5WFJC81Ttlwh3aD3Ik8Ur-03bvU816ig1eLS_jew9nsfL4JdMUc4lz2R3IeptAKXcaLoi6sVBIPZFYWCOP-vz9XPuH9zl-ZgUCkfoPor5n0Eo-q0b45BKoF_2y6BIkyZRbfDr-1fgamhLxOPe7Gzayknj3Jrf20ubEU4KyWSOQqXwfcj9UwzoZk_YWEcAhWeUgZYOxx_dK4PL4Iyq-Z0Qcw1-4dB_6Dy9EThOSdf8m8Ulz_hsp9O5ZoAzCPktEsWtCgh5Y"/>
+<button class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="font-label-md text-on-surface line-clamp-2 mb-1">Bolso Cuero Vintage</h3>
+<p class="font-h3 text-primary-container mb-2">120.00€</p>
+<div class="flex items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+<span class="text-caption">Barcelona • 1d</span>
+</div>
+</div>
+</article>
+<!-- Product Card 4 -->
+<article class="bg-white rounded-[24px] shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<div class="relative aspect-square overflow-hidden rounded-t-[24px]">
+<img alt="Modern lamp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract modern table lamp with warm glow against a minimalist sand-colored wall with long cinematic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEPMvhmOVrW_CzRwk7sHCTR8CFf7fi08AGwPIguE3ScXE8pRzPemD_iyrqTGhSXuz37t1F4mCsRLs6tezq8TAnN_7xpPnCD7eymti--4jlFo5ikAPE7_HO13rY-2Up6_vcCM7Vjw2GIk_vrNlZUJt4JeeyOPvIeYdB8Zb9KnQoOYst4R26FuTfUS4MgnIFVOEYFliOmbAy7Ca7K2ZBZduaZPmXbV_0EHJknneVB_s5YxXrBMZwCcsh-d_kTDiRU0eYO_taifnwIdc"/>
+<button class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-3">
+<h3 class="font-label-md text-on-surface line-clamp-2 mb-1">Lámpara de Diseño</h3>
+<p class="font-h3 text-primary-container mb-2">42.50€</p>
+<div class="flex items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+<span class="text-caption">Sevilla • 3h</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 bg-primary-container text-white flex items-center gap-2 px-6 py-4 rounded-[32px] shadow-lg shadow-[#FF7F50]/30 active:scale-90 transition-transform z-[60]">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-bold text-body-md">Publicar</span>
+</button>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 h-20 bg-[#FFFDFB]/90 dark:bg-stone-900/90 backdrop-blur-md border-t border-[#EAE3D2] dark:border-stone-800 shadow-[0_-4px_12px_rgba(74,69,64,0.08)] rounded-t-[24px]">
+<!-- Home (Active) -->
+<button class="flex flex-col items-center justify-center text-[#FF7F50] bg-orange-50 dark:bg-orange-950/30 rounded-2xl px-4 py-1.5 active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Home</span>
+</button>
+<!-- Search -->
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-4 py-1.5 hover:text-[#FF7F50] active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Search</span>
+</button>
+<!-- Invisible FAB spacer -->
+<div class="w-12"></div>
+<!-- Inbox (with badge) -->
+<button class="relative flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-4 py-1.5 hover:text-[#FF7F50] active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Inbox</span>
+<span class="absolute top-1.5 right-4 w-4 h-4 bg-primary text-white text-[10px] rounded-full flex items-center justify-center font-bold border-2 border-white">2</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-4 py-1.5 hover:text-[#FF7F50] active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Profile</span>
+</button>
+</nav>
+</body></html>

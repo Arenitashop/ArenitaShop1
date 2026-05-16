@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary": "#a43c12",
+                "surface-bright": "#fff8f6",
+                "secondary-container": "#61b4fe",
+                "inverse-surface": "#3a2e29",
+                "on-background": "#241915",
+                "on-primary-fixed": "#380c00",
+                "surface-container-low": "#fff1ec",
+                "on-tertiary-fixed-variant": "#004f54",
+                "on-primary-container": "#6c2000",
+                "surface-container-lowest": "#ffffff",
+                "background": "#fff8f6",
+                "on-error": "#ffffff",
+                "outline": "#8b7169",
+                "primary-fixed-dim": "#ffb59c",
+                "error": "#ba1a1a",
+                "primary-fixed": "#ffdbcf",
+                "surface-container-high": "#fae4dd",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed-variant": "#822800",
+                "on-primary": "#ffffff",
+                "surface-container-highest": "#f4ded7",
+                "surface-variant": "#f4ded7",
+                "secondary-fixed-dim": "#9acbff",
+                "on-secondary-fixed-variant": "#004a79",
+                "surface-tint": "#a43c12",
+                "primary-container": "#ff7f50",
+                "surface": "#fff8f6",
+                "on-secondary-fixed": "#001d34",
+                "inverse-on-surface": "#ffede8",
+                "on-secondary-container": "#004470",
+                "error-container": "#ffdad6",
+                "inverse-primary": "#ffb59c",
+                "tertiary-container": "#00b5c0",
+                "secondary": "#00629e",
+                "outline-variant": "#dec0b6",
+                "tertiary": "#006970",
+                "tertiary-fixed": "#7af4ff",
+                "on-surface-variant": "#57423b",
+                "on-tertiary": "#ffffff",
+                "on-surface": "#241915",
+                "on-error-container": "#93000a",
+                "surface-dim": "#ebd6cf",
+                "on-tertiary-container": "#004145",
+                "secondary-fixed": "#cfe5ff",
+                "on-tertiary-fixed": "#002022",
+                "surface-container": "#ffe9e3",
+                "tertiary-fixed-dim": "#4dd9e4"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "gutter": "24px",
+                "margin": "32px",
+                "lg": "48px",
+                "base": "8px",
+                "xl": "80px",
+                "md": "24px",
+                "sm": "12px",
+                "xs": "4px"
+            },
+            "fontFamily": {
+                "label-md": ["Manrope"],
+                "stat-pill": ["Manrope"],
+                "body-md": ["Manrope"],
+                "body-lg": ["Manrope"],
+                "h2": ["Manrope"],
+                "h1": ["Manrope"],
+                "h3": ["Manrope"]
+            },
+            "fontSize": {
+                "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "stat-pill": ["12px", {"lineHeight": "1", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #F5F2ED; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #00629e 0%, #61b4fe 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- Top Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-16 bg-transparent">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</nav>
+<!-- Profile Hero Section -->
+<header class="hero-gradient pt-20 pb-24 px-6 flex flex-col items-center relative">
+<!-- Avatar Wrapper -->
+<div class="relative mb-4">
+<div class="w-32 h-32 rounded-full border-4 border-white shadow-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="professional headshot of a friendly smiling woman in a bright workshop setting with warm natural sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEotBfifQ2mSX7lR2_KsoIVBfyqaBmufXUCnWAhSRhWqTuec5Ny1kKH8TrYYgr2xBqXt0gbIjApYR2Sd1Q0MnK-Ruop-LzMAJb9iXpKwLIGiDLiWZqGXVEkJyvlkTqQvpCC_IclZHfKV_w68jP3b8uizMnik0YPpeFSmZnV7RuCaSaye_2f032ph_db0m48MEPFCkXj0da4qQ5k1kpFwZ-7vcC4H6MYdQMnMkl1Av9IvpFzZpYsBxFFcKwjU59coevMPVIIhDNu6Cx"/>
+</div>
+<div class="absolute bottom-1 right-1 bg-white rounded-full p-1 shadow-md flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<h1 class="font-h3 text-white mb-1">Elena Ruiz</h1>
+<p class="font-label-md text-white/80 mb-6">@elena_artesanía</p>
+<!-- Stats Row -->
+<div class="flex flex-wrap justify-center gap-2 mb-4">
+<div class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-stat-pill text-on-surface">47 ventas</span>
+</div>
+<div class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-orange-400 text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-stat-pill text-on-surface">4.8</span>
+</div>
+<div class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-stat-pill text-on-surface">Miembro desde 2023</span>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="relative -mt-12 px-4 pb-32">
+<div class="bg-white rounded-t-[32px] shadow-[0_-4px_30px_rgba(0,0,0,0.05)] p-6 space-y-8">
+<!-- Bio & Location -->
+<section class="space-y-3">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="font-label-md">Barcelona, España</span>
+</div>
+<p class="text-on-surface-variant font-body-md leading-relaxed">
+                    Apasionada por la cerámica artesanal y los tesoros vintage. Todas mis piezas son seleccionadas con amor para dar un toque cálido a tu hogar. 🐚✨
+                </p>
+<button class="w-full bg-primary-container text-white font-h3 py-4 rounded-xl shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="chat_bubble" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+                    Chatear
+                </button>
+</section>
+<!-- Active Listings -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-h3 text-on-surface">Publicaciones activas</h2>
+<a class="font-label-md text-secondary" href="#">Ver todo</a>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Product Card 1 -->
+<div class="bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-container-highest">
+<div class="h-40 relative">
+<img class="w-full h-full object-cover" data-alt="handcrafted ceramic vase with organic textures and soft turquoise glaze on a sunlit wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADdxFDav-ihh_Ppr5wm4MBUorda7lw4oWWDviWCe75pRjoySBmDYMDz6CBPHM74bjljN_oI7Lgsj8KZR0Vo26JxJnBBFlDSAh-RJnTmv7B1Q27kPI_ROBs4coL96YWlkGuJpg8ZELW7Q4lUvb-9PWrniZT1_BGnA98jrrlhznlev0SperUIsHsz033x2jAG6TfsILz8c2RZIxMbTBcKE9OOCQGSFlo9W7QlCfAdDDSIQ1abAbdnDrWWXbDMJ3X1Cq8SWjfaLIqyMiW"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur-md p-1.5 rounded-full">
+<span class="material-symbols-outlined text-[18px] text-on-surface" data-icon="favorite">favorite</span>
+</div>
+</div>
+<div class="p-3">
+<h3 class="font-label-md text-on-surface truncate">Jarrón Turquesa</h3>
+<p class="font-h3 text-primary text-lg">€34,00</p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-surface-container-highest">
+<div class="h-40 relative">
+<img class="w-full h-full object-cover" data-alt="set of minimalist linen napkins in sandy beige and muted coral colors folded neatly on a stone surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbW5k6RpcbfZ4BKr10l6n-RU-MtFyZPEm1jiihtTYUWO5Y7iZgZ8DY0kw2p25KqoiUdCNYE61VucCGS_idAYSADVIG4TWM1F7medRH-7YrXSIq-XVBtnusPmnxhfC5thBt7ctyt7kw51GL5NnfjrPnHj2T0HWj3PHcMv_uq9jrH1K5oFVu3mpovWtoRYYc_8rhvBzltAqcAhFWuTzlBKkaH2ZKkc-wL1wGroaM3dzBUSbj__0htvc6oy7qrFYaUqAljNKbPPBuMx22"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur-md p-1.5 rounded-full">
+<span class="material-symbols-outlined text-[18px] text-on-surface" data-icon="favorite">favorite</span>
+</div>
+</div>
+<div class="p-3">
+<h3 class="font-label-md text-on-surface truncate">Set de Servilletas</h3>
+<p class="font-h3 text-primary text-lg">€18,50</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Reviews -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="font-h3 text-on-surface">Reseñas</h2>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-orange-400 text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-stat-pill">4.8 (24)</span>
+</div>
+</div>
+<!-- Review Card 1 -->
+<div class="p-4 bg-surface-container-low rounded-2xl border border-outline-variant/30">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="close up profile of a man with glasses smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBawTr-Zs8XARVxeb0S8tDs5kSeSSaqqW3F6O9XMWLJWtFjg178kyIThJb6LoPtJ13yxZD3Frj8EoQhlEBrf7dGNGLL0vvMub_hkVeGzsLPXCA1dKtc8gph-I0yJtxOsIZb45JYkWmdvAfECMNV8BXZALF82k7hSENe6WAUleSzPNyMiPxqqzvDpIEJa1_OiSyKTm__kvYhE9izSIt92UNGGj9-bZdPScD9SgGa4DxbeLm9HhiJhPKxS7_eyN9bcCbJ7ailN_it2rqc"/>
+<span class="font-label-md">Marco S.</span>
+</div>
+<span class="text-xs text-on-surface-variant">Hace 2 días</span>
+</div>
+<div class="flex gap-0.5 mb-2">
+<span class="material-symbols-outlined text-orange-400 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-orange-400 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-orange-400 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-orange-400 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-orange-400 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant italic">"El jarrón es precioso, llegó muy bien empaquetado y es tal cual se ve en las fotos. Elena es muy amable."</p>
+</div>
+<!-- Review Card 2 -->
+<div class="p-4 bg-surface-container-low rounded-2xl border border-outline-variant/30">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="portrait of a young woman with curly hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC03MMQK8KFHc2UNQVBzCrC8TSbUWLjgh3OhoDTxZUTShjBIEX8luN0wzS_LEyhNJj7yPYLf5De9K7r7WB-OmusjflScYKC3SdWezODbXeATpoXFgaoyAsWSYu-wI4QCwSR9vSbeSwMMy6Jm89iDofyjyHxuMOzabYWlqb8hjvZo6EmCS9zo7Zdy81UBj8u4h6Y44ch6wikAIQCMrJwqHVsz8B40vMBkMHlp-GWDk_DUXatDezkQQF33ouF-shFU8PdffgPRpkYPPrX"/>
+<span class="font-label-md">Clara M.</span>
+</div>
+<span class="text-xs text-on-surface-variant">Hace 1 semana</span>
+</div>
+<div class="flex gap-0.5 mb-2">
+<span class="material-symbols-outlined text-orange-400 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-orange-400 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-orange-400 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-orange-400 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-slate-300 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant italic">"Envío rápido y producto de calidad. Repetiré seguro."</p>
+</div>
+</section>
+</div>
+</main>
+<!-- Navigation Shell from JSON -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe bg-white/95 backdrop-blur-md h-20 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] border-t border-[#DED9D1] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 transition-all duration-300 ease-in-out hover:text-orange-600">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[11px] font-semibold">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 transition-all duration-300 ease-in-out hover:text-orange-600">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Manrope'] text-[11px] font-semibold">Explorar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 transition-all duration-300 ease-in-out hover:text-orange-600">
+<span class="material-symbols-outlined text-primary-container" data-icon="add_circle">add_circle</span>
+<span class="font-['Manrope'] text-[11px] font-semibold">Vender</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 transition-all duration-300 ease-in-out hover:text-orange-600">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-['Manrope'] text-[11px] font-semibold">Mensajes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-orange-500 dark:text-orange-400 scale-110 transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[11px] font-semibold">Mi Cuenta</span>
+</div>
+</nav>
+</body></html>

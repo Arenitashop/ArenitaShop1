@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#004145",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#00b5c0",
+                        "outline": "#8b7169",
+                        "outline-variant": "#dec0b6",
+                        "inverse-surface": "#303030",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#6c2000",
+                        "inverse-primary": "#ffb59c",
+                        "error": "#ba1a1a",
+                        "primary-container": "#ff7f50",
+                        "surface-variant": "#e4e2e1",
+                        "surface": "#fbf9f8",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#e7e2d8",
+                        "on-secondary-fixed-variant": "#494740",
+                        "secondary-fixed": "#e7e2d8",
+                        "tertiary": "#006970",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-fixed-dim": "#cac6bd",
+                        "tertiary-fixed-dim": "#4dd9e4",
+                        "inverse-on-surface": "#f3f0f0",
+                        "on-tertiary-fixed": "#002022",
+                        "on-secondary-container": "#67645c",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-surface-variant": "#57423b",
+                        "surface-bright": "#fbf9f8",
+                        "on-background": "#1b1c1c",
+                        "surface-container-high": "#eae8e7",
+                        "primary": "#a43c12",
+                        "primary-fixed": "#ffdbcf",
+                        "background": "#fbf9f8",
+                        "secondary": "#615e57",
+                        "surface-tint": "#a43c12",
+                        "surface-container-low": "#f6f3f2",
+                        "tertiary-fixed": "#7af4ff",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary-fixed": "#1d1c16",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-primary-fixed": "#380c00",
+                        "surface-container": "#f0eded",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "20px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "h3": ["20px", {"lineHeight": "26px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F5F0E6;
+            color: #1b1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-sand { background-color: #F5F0E6; }
+        .text-coral { color: #FF7F50; }
+        .bg-coral { background-color: #FF7F50; }
+        .border-coral { border-color: #FF7F50; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 h-16 bg-[#F5F0E6] border-b border-[#EAE3D5]">
+<div class="flex items-center active:scale-95 transition-all duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-stone-800" data-icon="arrow_back">arrow_back</span>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] text-lg font-bold text-stone-800">Editar perfil</h1>
+<button class="font-['Plus_Jakarta_Sans'] text-sm font-bold text-[#FF7F50] hover:opacity-80 transition-opacity active:scale-95">
+            Guardar
+        </button>
+</header>
+<main class="mt-20 px-5 space-y-6">
+<!-- Avatar Section -->
+<section class="flex flex-col items-center justify-center pt-4">
+<div class="relative">
+<div class="w-32 h-32 rounded-full border-4 border-white overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="portrait of a creative young woman with a friendly expression in soft natural warm sunlight indoor setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3eQgFxAmp96QbT3guC2rtf1XL1iNj6vYhl9aB79NoJT1OM46MhH1g-fXUYc2-28vokefAXB5RKLIMq_eE-MOj8ZW1SH7w5rNdFbbSWSzLE-1l6T9bD82F0SfZT9xKn6XN6d98QLB8UsZwdNVrQvPk8j_-Vn06nxgA7hp_4wj21uMnUFccsOXLTMMlx0ErRtTgmjatr7dmlembQXtzPKuhc4BEYmfKk5iQuK2wPuw2ZAzsxpzZgH40K2ZBr8KvKSEmYMGigjswr_Gi"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-coral w-10 h-10 rounded-full flex items-center justify-center text-white border-4 border-sand shadow-sm active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="photo_camera" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</button>
+</div>
+<button class="mt-4 text-coral font-label-md hover:underline decoration-2 underline-offset-4">
+                Cambiar foto
+            </button>
+</section>
+<!-- Form Card -->
+<section class="bg-white rounded-2xl shadow-[0_4px_20px_0_rgba(45,42,38,0.04)] overflow-hidden">
+<!-- Nombre Completo -->
+<div class="p-md space-y-1">
+<label class="font-label-sm text-secondary uppercase tracking-wider">Nombre completo</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-on-surface placeholder:text-stone-300" type="text" value="Lucía García Arenas"/>
+</div>
+<div class="h-[1px] bg-[#EAE3D5] mx-md"></div>
+<!-- Nombre de Usuario -->
+<div class="p-md space-y-1">
+<label class="font-label-sm text-secondary uppercase tracking-wider">Nombre de usuario</label>
+<div class="flex items-center gap-1">
+<span class="text-stone-400 font-body-md">@</span>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-on-surface" type="text" value="luci_arenita"/>
+</div>
+</div>
+<div class="h-[1px] bg-[#EAE3D5] mx-md"></div>
+<!-- Bio -->
+<div class="p-md space-y-1 relative">
+<label class="font-label-sm text-secondary uppercase tracking-wider">Bio</label>
+<textarea class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-on-surface resize-none placeholder:text-stone-300" placeholder="Cuéntanos sobre ti..." rows="3">Amante de las piezas únicas y el estilo mediterráneo. Coleccionista de tesoros vintage. ✨</textarea>
+<div class="text-right">
+<span class="text-[10px] font-medium text-stone-400">88/150</span>
+</div>
+</div>
+<div class="h-[1px] bg-[#EAE3D5] mx-md"></div>
+<!-- Ciudad -->
+<div class="p-md space-y-1">
+<label class="font-label-sm text-secondary uppercase tracking-wider">Ciudad</label>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-stone-400 text-[20px]" data-icon="location_on">location_on</span>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-on-surface" type="text" value="Barcelona, España"/>
+</div>
+</div>
+<div class="h-[1px] bg-[#EAE3D5] mx-md"></div>
+<!-- WhatsApp -->
+<div class="p-md space-y-1">
+<label class="font-label-sm text-secondary uppercase tracking-wider">WhatsApp (opcional)</label>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-stone-400 text-[20px]" data-icon="phone">phone</span>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-on-surface" type="tel" value="+34 600 000 000"/>
+</div>
+<p class="text-[11px] text-stone-400 mt-1">Solo visible para compradores interesados</p>
+</div>
+</section>
+<!-- Cuenta Section -->
+<section class="space-y-3">
+<h2 class="font-h3 text-stone-800 px-1">Cuenta</h2>
+<div class="bg-white rounded-2xl shadow-[0_4px_20px_0_rgba(45,42,38,0.04)] overflow-hidden">
+<!-- Email -->
+<div class="p-md flex justify-between items-center bg-stone-50/50">
+<div class="space-y-1">
+<label class="font-label-sm text-secondary uppercase tracking-wider">Email</label>
+<p class="font-body-md text-stone-500">lucia.arenas@email.com</p>
+</div>
+<span class="material-symbols-outlined text-stone-300 text-[20px]" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div class="h-[1px] bg-[#EAE3D5] mx-md"></div>
+<!-- Cambiar Contraseña -->
+<button class="w-full p-md flex justify-between items-center active:bg-stone-50 transition-colors">
+<span class="font-label-md text-stone-800">Cambiar contraseña</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="pt-4 pb-8">
+<button class="w-full flex items-center justify-center gap-2 p-4 text-stone-400 font-label-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+                Eliminar cuenta
+            </button>
+</section>
+</main>
+<!-- BottomNavBar (Semantic Shell) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 h-20 bg-white border-t border-[#EAE3D5] shadow-[0_-4px_20px_0_rgba(45,42,38,0.08)] rounded-t-3xl">
+<div class="flex flex-col items-center justify-center text-stone-400 px-4 py-1 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 px-4 py-1 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium">Explorar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 px-4 py-1 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium">Carrito</span>
+</div>
+<!-- Perfil Active -->
+<div class="flex flex-col items-center justify-center bg-orange-50 text-[#FF7F50] rounded-2xl px-4 py-1 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-bold">Perfil</span>
+</div>
+</nav>
+</body></html>

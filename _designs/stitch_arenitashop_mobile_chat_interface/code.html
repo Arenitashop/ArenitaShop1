@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArenitaShop - Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .chat-container {
+            height: calc(100vh - 120px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#00531c",
+                      "on-background": "#1b1b1d",
+                      "inverse-primary": "#ffb59c",
+                      "secondary-container": "#dfdfe4",
+                      "on-secondary-container": "#616267",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary": "#5d5e63",
+                      "on-secondary-fixed-variant": "#45474b",
+                      "outline": "#8b7169",
+                      "surface-bright": "#fcf8fb",
+                      "primary-fixed-dim": "#ffb59c",
+                      "secondary-fixed-dim": "#c6c6cb",
+                      "surface-container-highest": "#e4e2e4",
+                      "on-primary-fixed-variant": "#822800",
+                      "on-primary-fixed": "#380c00",
+                      "error-container": "#ffdad6",
+                      "surface": "#fcf8fb",
+                      "tertiary-fixed": "#72fe88",
+                      "surface-container-low": "#f6f3f5",
+                      "outline-variant": "#dec0b6",
+                      "surface-variant": "#e4e2e4",
+                      "on-tertiary-fixed": "#002107",
+                      "secondary-fixed": "#e2e2e7",
+                      "tertiary": "#006e28",
+                      "on-error": "#ffffff",
+                      "surface-container": "#f0edef",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#53e16f",
+                      "background": "#fcf8fb",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#23bc50",
+                      "on-surface-variant": "#57423b",
+                      "on-tertiary-container": "#004416",
+                      "surface-tint": "#a43c12",
+                      "primary-fixed": "#ffdbcf",
+                      "inverse-surface": "#303032",
+                      "on-surface": "#1b1b1d",
+                      "surface-dim": "#dcd9dc",
+                      "primary-container": "#ff7f50",
+                      "inverse-on-surface": "#f3f0f2",
+                      "on-primary-container": "#6c2000",
+                      "surface-container-high": "#eae7ea",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed": "#1a1c1f",
+                      "primary": "#a43c12"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "12px",
+                      "stack-lg": "24px",
+                      "base": "8px",
+                      "stack-sm": "4px",
+                      "stack-md": "16px",
+                      "bubble-padding": "12px 16px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "h1": ["Plus Jakarta Sans"],
+                      "h2": ["Plus Jakarta Sans"],
+                      "caption": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "h2": ["24px", {"lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background flex flex-col min-h-screen max-w-[375px] mx-auto shadow-2xl relative overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-white/90 backdrop-blur-md docked full-width top-0 z-50 border-b border-gray-100 shadow-sm sticky top-0">
+<div class="flex items-center justify-between px-5 h-16 w-full">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 duration-200 text-gray-500">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex items-center gap-3">
+<img alt="Product" class="w-10 h-10 rounded-lg object-cover" data-alt="close-up of a high-end vintage chrome rangefinder camera sitting on a wooden surface with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAerOqD_svXCulh47INvuTu-XkCGMlq4vAoQqYX41PeAuVEtfwOwpnGhOfHzq3Mvk6eauJxkXmzxEl-NwbDigeebYNzC5wPvnbuWRSQn7Sq3ClxLedgbQxXt82RjjG_hX2j2LqnQ3OerymskT_kG8OOscDr7HCFTiTV2uFqlLgXKL2NI9DCUMLXid0K_30l4ROPsbN3lV_dk6kOMnbHtTrEskpAqJQtsK-ICHvNQjkm2SnNt4rxJ2iFj-KRo1Zo-JesC9K0WuZDvaRx"/>
+<div class="flex flex-col">
+<span class="font-['Plus_Jakarta_Sans'] font-semibold text-[14px] leading-tight text-on-background">Vintage Camera</span>
+<span class="font-['Plus_Jakarta_Sans'] font-bold text-[12px] text-[#FF7F50]">45,00€</span>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-gray-100">
+<img alt="Carlos" class="w-full h-full object-cover" data-alt="portrait of a young smiling man with short dark hair and a light beard in a casual white t-shirt, bright natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTYg9J88m--hWY7MB2LagmJSbGO44WRPhvu65E7-HLD7KmVmMBjZEmTcdYg0a1lQHnxnkdGNNQo2l_Curl0n3CpiNaQaAvpisoYaQhfv9ViLgIJMjSeerdtvayE0zwr7Y93k4zqTdlHwTfaX4SqrTGneV7hazafvs9VgNxIQCCM97_T6k_6_zLbI5X7Ix3Va9RGWtNEH3Y8eIgopVf24GO4YGCub9Qeq6TsVzZSZaxfiVMkrRJnZU6UIaMe7ZTcBEEGQnIpk6qmnK5"/>
+</div>
+</div>
+</div>
+<div class="bg-white px-5 py-2 flex justify-end">
+<button class="text-[#FF7F50] font-label-md text-caption active:scale-95 transition-transform">
+                Marcar como vendido
+            </button>
+</div>
+</header>
+<!-- Chat Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-mobile py-stack-md flex flex-col space-y-stack-md chat-container pb-24">
+<div class="text-center">
+<span class="font-caption text-caption text-secondary py-2">Hoy, 14:30</span>
+</div>
+<!-- Received Message Group -->
+<div class="flex flex-col items-start space-y-stack-sm max-w-[85%]">
+<span class="font-label-md text-caption text-secondary ml-2">Carlos</span>
+<div class="bg-[#F2F2F7] text-[#1C1C1E] p-bubble-padding rounded-2xl rounded-bl-none shadow-sm">
+<p class="font-body-md text-body-md">¡Hola! Estoy muy interesado en la cámara. ¿Sigue disponible para hoy?</p>
+</div>
+</div>
+<!-- Sent Message Group -->
+<div class="flex flex-col items-end space-y-stack-sm max-w-[85%] self-end">
+<div class="bg-primary-container text-on-primary p-bubble-padding rounded-2xl rounded-br-none shadow-sm">
+<p class="font-body-md text-body-md">Hola Carlos, sí, todavía la tengo. ¿Te gustaría pasar a verla?</p>
+</div>
+<div class="flex items-center gap-1 mr-1">
+<span class="font-caption text-[10px] text-secondary">14:35</span>
+<span class="text-[#FF7F50] text-[12px] font-bold">✓✓</span>
+</div>
+</div>
+<!-- Image Message -->
+<div class="flex flex-col items-end space-y-stack-sm max-w-[70%] self-end">
+<div class="rounded-2xl rounded-br-none overflow-hidden border-2 border-primary-container shadow-sm">
+<img alt="Camera detail" class="w-full h-auto" data-alt="detailed macro shot of the lens and dials of a vintage rangefinder camera, showing metallic textures and intricate markings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc5_x6c9s5pmIfXhuMT3gEO4VYlbwS549k9bP6fh70CB0z71ngf3l8UhCt4YffGjmLNg4eVUxUQOFwH7RTgUlPmPzFmePDlv_WHp6AHWJI82vPtj_QBLfMJRMdVU6Qq9Fh5GA3grZVeblR8cZs1AYqoJLAQxkd0M-8l_RE0NVa6luKRRtg7uEwtau-ctixd4xczCDpyPOLbn8VALKAUz22TKSKhT0MN2N-dqJQaaTYDn4YQLdf5EN-Ij1x7cZSLzawMzY8j4MJfkk8"/>
+</div>
+<div class="flex items-center gap-1 mr-1">
+<span class="font-caption text-[10px] text-secondary">14:36</span>
+<span class="text-[#FF7F50] text-[12px] font-bold">✓✓</span>
+</div>
+</div>
+<div class="text-center py-2">
+<span class="font-caption text-caption text-secondary">Oferta recibida</span>
+</div>
+<!-- Offer Card Message -->
+<div class="flex flex-col items-start space-y-stack-sm max-w-[85%]">
+<div class="bg-white border border-gray-100 p-bubble-padding rounded-2xl rounded-bl-none shadow-sm w-full">
+<div class="flex flex-col items-center space-y-3">
+<span class="font-label-md text-secondary">Nueva oferta de Carlos</span>
+<span class="font-h2 text-h2 text-on-background">40,00€</span>
+<button class="w-full bg-primary-container text-white py-2 rounded-xl font-label-md active:scale-95 transition-transform shadow-md">
+                        Ver oferta
+                    </button>
+</div>
+</div>
+</div>
+<!-- Quick Reply Chips -->
+<div class="flex gap-2 overflow-x-auto py-2 no-scrollbar">
+<button class="whitespace-nowrap bg-white border border-outline-variant px-4 py-2 rounded-xl text-caption font-label-md hover:bg-surface-container-low transition-colors">¿Dónde quedamos?</button>
+<button class="whitespace-nowrap bg-white border border-outline-variant px-4 py-2 rounded-xl text-caption font-label-md hover:bg-surface-container-low transition-colors">¿Aceptas 35€?</button>
+<button class="whitespace-nowrap bg-white border border-outline-variant px-4 py-2 rounded-xl text-caption font-label-md hover:bg-surface-container-low transition-colors">¿Funciona bien?</button>
+</div>
+</main>
+<!-- Sticky Input Bar -->
+<footer class="fixed bottom-0 left-0 right-0 max-w-[375px] mx-auto bg-white/90 backdrop-blur-md border-t border-gray-100 px-4 py-3 pb-8 z-50">
+<div class="flex items-center gap-3">
+<button class="text-secondary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</button>
+<div class="flex-1 bg-[#F2F2F7] rounded-full px-4 py-2 flex items-center">
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-gray-400" placeholder="Escribe un mensaje..." type="text"/>
+</div>
+<button class="bg-primary-container text-white w-10 h-10 rounded-full flex items-center justify-center active:scale-90 transition-transform shadow-[0_4px_12px_rgba(255,127,80,0.3)]">
+<span class="material-symbols-outlined" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</footer>
+<!-- BottomNavBar (Optional Suppression applied as this is a focused Task/Transaction screen) -->
+<!-- According to mandate, sub-pages with back actions should prioritize content canvas -->
+</body></html>

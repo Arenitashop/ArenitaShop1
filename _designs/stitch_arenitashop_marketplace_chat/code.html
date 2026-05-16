@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .unread-indicator {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar suppression for clean mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#92c0ed",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#eeeeee",
+                      "on-secondary-fixed": "#380c00",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#f0f1f1",
+                      "surface-tint": "#31628a",
+                      "secondary-fixed-dim": "#ffb59c",
+                      "on-tertiary-fixed": "#0d1d2a",
+                      "on-tertiary-container": "#adbecf",
+                      "tertiary": "#273644",
+                      "on-surface-variant": "#42474e",
+                      "surface-container-high": "#e8e8e8",
+                      "secondary-container": "#fe7e4f",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#6b1f00",
+                      "tertiary-fixed-dim": "#b8c8da",
+                      "on-surface": "#1a1c1c",
+                      "error-container": "#ffdad6",
+                      "surface": "#f9f9f9",
+                      "on-primary-fixed": "#001d32",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f9f9f9",
+                      "primary-fixed": "#cee5ff",
+                      "inverse-surface": "#2f3131",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#822800",
+                      "inverse-primary": "#9dcbf9",
+                      "outline-variant": "#c2c7cf",
+                      "on-primary-fixed-variant": "#134a71",
+                      "primary": "#00385a",
+                      "primary-fixed-dim": "#9dcbf9",
+                      "secondary-fixed": "#ffdbcf",
+                      "tertiary-fixed": "#d4e4f6",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#394857",
+                      "surface-dim": "#dadada",
+                      "tertiary-container": "#3e4d5c",
+                      "surface-container-low": "#f3f3f4",
+                      "primary-container": "#1a4f76",
+                      "on-background": "#1a1c1c",
+                      "outline": "#72787f",
+                      "secondary": "#a43c12",
+                      "background": "#f9f9f9",
+                      "surface-variant": "#e2e2e2",
+                      "ocean-blue": "#31628a",
+                      "coral": "#fe7e4f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "lg": "24px",
+                      "gutter": "12px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "container-margin": "20px",
+                      "base": "8px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "label-bold": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "h1": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "h3": ["Plus Jakarta Sans"],
+                      "body-sm": ["Plus Jakarta Sans"],
+                      "h2": ["Plus Jakarta Sans"]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright flex justify-center">
+<!-- Mobile Container (375px) -->
+<main class="w-[375px] min-h-screen bg-white relative flex flex-col shadow-2xl overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-5 h-16 w-full fixed top-0 z-50 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800 shadow-sm dark:shadow-none">
+<div class="flex items-center gap-3">
+<button class="transition-colors duration-200 active:opacity-70 hover:bg-slate-50 dark:hover:bg-slate-800 p-1 rounded-full">
+<span class="material-symbols-outlined text-sky-800 dark:text-sky-400">menu</span>
+</button>
+<h1 class="font-plus-jakarta font-bold text-lg text-sky-800 dark:text-sky-400">Mensajes</h1>
+</div>
+<div class="flex items-center">
+<button class="transition-colors duration-200 active:opacity-70 hover:bg-slate-50 dark:hover:bg-slate-800 p-1 rounded-full">
+<span class="material-symbols-outlined text-sky-800 dark:text-sky-400">search</span>
+</button>
+</div>
+</header>
+<!-- Conversation List Content -->
+<section class="flex-1 mt-16 pb-24 overflow-y-auto no-scrollbar">
+<!-- Filter Tabs (Subtle contextual UI) -->
+<div class="px-5 py-4 flex gap-4 overflow-x-auto no-scrollbar">
+<button class="bg-primary text-white px-4 py-1.5 rounded-full font-label-bold text-label-bold">Todo</button>
+<button class="bg-surface-container-low text-on-surface-variant px-4 py-1.5 rounded-full font-label-bold text-label-bold">Ventas</button>
+<button class="bg-surface-container-low text-on-surface-variant px-4 py-1.5 rounded-full font-label-bold text-label-bold">Compras</button>
+</div>
+<!-- List Items -->
+<div class="flex flex-col">
+<!-- Conversation Item 1 (Unread) -->
+<div class="bg-surface-container-low/50 px-5 py-4 flex gap-4 items-center transition-colors hover:bg-surface-container transition-all active:scale-[0.98]">
+<div class="relative flex-shrink-0">
+<img class="w-[52px] h-[52px] rounded-lg object-cover" data-alt="Modern white digital watch on a minimalist background with soft shadows and studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4Gukv6gIt2_1qTY1dbaCnxdkyWvtgqNjMsWlKOCStb9_IvH7sb5MUv-SYelqgdu6KiES8c6d5jA9krqtY2dZtlPcHRB6PkqbRxyJ5oJ2qweYtfWBMxR2nJvaXjiY_ZRfkgZsuVy8cdMCEYU-IBVrXcW0nTbSW7a9OKFw9IhGnPGbyRy26CNzU_d-xGoYGovaJK1mmmcfkCNJpxA0LBoItl7zSMyZ5yVAh4ljYDEsn_bhjKgsZXgUDYFyjmzOEP25sNJF32zr2curJ"/>
+<div class="absolute -top-1 -right-1 w-3 h-3 bg-coral rounded-full border-2 border-white"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="font-bold text-body-md text-on-surface truncate pr-2 font-extrabold">Julian Alvarez</h3>
+<span class="text-body-sm text-outline flex-shrink-0 font-medium">10:45 AM</span>
+</div>
+<p class="text-body-sm text-on-surface font-semibold truncate leading-tight mb-0.5">¿Todavía está disponible para hoy?</p>
+<span class="text-[10px] font-bold text-coral uppercase tracking-wider">Minimalist Watch Gen 2</span>
+</div>
+<div class="flex flex-col items-end gap-1 flex-shrink-0 ml-2">
+<div class="w-5 h-5 bg-coral rounded-full flex items-center justify-center">
+<span class="text-[10px] text-white font-bold">2</span>
+</div>
+</div>
+</div>
+<div class="mx-5 h-[1px] bg-[#F0F2F5]"></div>
+<!-- Conversation Item 2 (Unread) -->
+<div class="bg-surface-container-low/50 px-5 py-4 flex gap-4 items-center transition-colors hover:bg-surface-container transition-all active:scale-[0.98]">
+<div class="relative flex-shrink-0">
+<img class="w-[52px] h-[52px] rounded-lg object-cover" data-alt="Bright red professional running sneaker positioned dynamically on a clean grey surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeaRjsnl0NeZPbJMNwCK2lEPG2iKECU2f8mzDuJaWYj3F_XAkz_ugaJXk3-TeMptWVY5ZEAbEKPzivOgf5JJy114PC3A7doje2AAzuwmd2Olzq78CZOitC9tlZ-oBE9KUD38kTBCYEkzxgY2JlcRUrr2v5lxMo7JCkJALvc3R0Ny8f4qmXeSPEgmPSHFT3aephrJAdvL3En2Ng-ACRaFzcWPOwtmixjyQu4dxGncZERJDd9uqrDw6bcB-tIcQpUVfxqzwC_2c9RrQX"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="font-bold text-body-md text-on-surface truncate pr-2 font-extrabold">Carla Gomez</h3>
+<span class="text-body-sm text-outline flex-shrink-0 font-medium">09:12 AM</span>
+</div>
+<p class="text-body-sm text-on-surface font-semibold truncate leading-tight mb-0.5">Me interesa el talle 42, ¿haces envíos?</p>
+<span class="text-[10px] font-bold text-coral uppercase tracking-wider">Nike Air Max Red</span>
+</div>
+<div class="flex flex-col items-end gap-1 flex-shrink-0 ml-2">
+<div class="w-5 h-5 bg-coral rounded-full flex items-center justify-center">
+<span class="text-[10px] text-white font-bold">1</span>
+</div>
+</div>
+</div>
+<div class="mx-5 h-[1px] bg-[#F0F2F5]"></div>
+<!-- Conversation Item 3 (Read) -->
+<div class="bg-white px-5 py-4 flex gap-4 items-center transition-colors hover:bg-surface-container-low transition-all active:scale-[0.98]">
+<div class="relative flex-shrink-0">
+<img class="w-[52px] h-[52px] rounded-lg object-cover" data-alt="High-quality black studio headphones on a wooden table with soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6YmwGhqp9n8RuRng-vTYRP0L1da4n3m3_MZhNgxECj0-24dWQvFSfXhcNsAeXamuz7QiDpY4fiZ6_N8cqrs0B9sMVGpUBViWevuoV6shf8i4W5BAF7-wE2YgU2-IpbVHmFDjyPEHwcx6r7Juj4S-JW_jLLjZ4-MLCSRtyGO21UBKweDYYANLTi-gmg5_5F1doN7FQlnTFXFQOnyiYn_myPLMFVWPxNpm0F4LqaVRCk6JbKXxiCFoO3JF5fEFa5kgwjQHjtfLnlvok"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="font-bold text-body-md text-on-surface truncate pr-2">Marcos Lopez</h3>
+<span class="text-body-sm text-outline flex-shrink-0 font-medium">Ayer</span>
+</div>
+<p class="text-body-sm text-outline truncate leading-tight mb-0.5">Dale, nos vemos en el centro a las 18hs.</p>
+<span class="text-[10px] font-bold text-coral uppercase tracking-wider">Sony WH-1000XM4</span>
+</div>
+<div class="flex-shrink-0 ml-2">
+<span class="material-symbols-outlined text-[16px] text-sky-600 unread-indicator">done_all</span>
+</div>
+</div>
+<div class="mx-5 h-[1px] bg-[#F0F2F5]"></div>
+<!-- Conversation Item 4 (Read) -->
+<div class="bg-white px-5 py-4 flex gap-4 items-center transition-colors hover:bg-surface-container-low transition-all active:scale-[0.98]">
+<div class="relative flex-shrink-0">
+<img class="w-[52px] h-[52px] rounded-lg object-cover" data-alt="Vintage style analog camera on a rustic leather bag with warm atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS9cQVhKI0dzAThzkZCv3LmDdaNSSete-RpygxkfwmzKum0MB8JoGOnDOTWjocjZLfTwsu6to-CtMjCqA3M1DA7QLoFgSVthLHKAUzFH70sAXNMq3XhFOCKdhWeexstFRuvDq_wQKOaYgCEiYSQ27k8MqNALEclp7yOr_zJQcmiesm_VxK6MCMLGiQbSzkaYR62Fy-FiZ0JY5in535H2_kKK--jNjTiKTO0zhJXPVjKwT4gucGVeYZhRFHKnYovdckswJLbCQPqVBR"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="font-bold text-body-md text-on-surface truncate pr-2">Sofia Ricci</h3>
+<span class="text-body-sm text-outline flex-shrink-0 font-medium">Ayer</span>
+</div>
+<p class="text-body-sm text-outline truncate leading-tight mb-0.5">¡Gracias! El producto está impecable.</p>
+<span class="text-[10px] font-bold text-coral uppercase tracking-wider">Cámara Retro 35mm</span>
+</div>
+</div>
+<div class="mx-5 h-[1px] bg-[#F0F2F5]"></div>
+<!-- Conversation Item 5 (Read) -->
+<div class="bg-white px-5 py-4 flex gap-4 items-center transition-colors hover:bg-surface-container-low transition-all active:scale-[0.98]">
+<div class="relative flex-shrink-0">
+<img class="w-[52px] h-[52px] rounded-lg object-cover" data-alt="Ceramic coffee dripper and glass pot on a white counter with bright natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtfUO88UdNG4AI1hUoh1fbykf3JeKn5vHBdEBmESDNwGyoWSFSVPqroIcRgDo5xFN51gwGdjxXlBjx9z_YwdvngBuc24WL-xWXOaPDcToKkBve_XjuW7VkRRd7ToABw96OOiVAUwj-g3x7_y5V_8thdpb-SYoIdZpjoVAqSQtHmrhKEiz-a6TLQ2QgH89ZoOR2UM91bJ7G8e75jx2yIeCf6xB7_VkuDAtpMSScCNhfdUlJICweFW4wh7Fa8zd8x7QtVqrQLOskXApC"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="font-bold text-body-md text-on-surface truncate pr-2">Eduardo Paz</h3>
+<span class="text-body-sm text-outline flex-shrink-0 font-medium">Lunes</span>
+</div>
+<p class="text-body-sm text-outline truncate leading-tight mb-0.5">¿Aceptas mercado pago?</p>
+<span class="text-[10px] font-bold text-coral uppercase tracking-wider">Kit Barista Pro</span>
+</div>
+</div>
+<div class="mx-5 h-[1px] bg-[#F0F2F5]"></div>
+<!-- Conversation Item 6 (Read) -->
+<div class="bg-white px-5 py-4 flex gap-4 items-center transition-colors hover:bg-surface-container-low transition-all active:scale-[0.98]">
+<div class="relative flex-shrink-0">
+<img class="w-[52px] h-[52px] rounded-lg object-cover" data-alt="Canvas backpack in olive green against a neutral stone wall with sharp sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn9zKzK7QIN0bzgTBOcWcscCLBjRMB8q2IvcBAr5OqqZE2OIpJlzRh35aZFpjEfs4zza9ZqjD39ehpRQFY2chJTKFU07mPcb2yGx_dby4ck3a7EujCTuQlILZ7eswe450Vhhj4NLyG9iTJWPm_czxPfm_8dth3OhVyxFcgY_-mb184d0yv2_Uj7MjtS0SJ7dNLE0h-oGr0N_J4t5CYr8QG6wiU8yfk0j-f6k_xR5wYJnpXi-znAFHpkZVs24mvBCGsZf2tp_98FQxM"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="font-bold text-body-md text-on-surface truncate pr-2">Lucia Mendez</h3>
+<span class="text-body-sm text-outline flex-shrink-0 font-medium">02/10</span>
+</div>
+<p class="text-body-sm text-outline truncate leading-tight mb-0.5">El precio es charlable, mandame oferta.</p>
+<span class="text-[10px] font-bold text-coral uppercase tracking-wider">Mochila Urbana</span>
+</div>
+</div>
+<div class="mx-5 h-[1px] bg-[#F0F2F5]"></div>
+<!-- Conversation Item 7 (Read) -->
+<div class="bg-white px-5 py-4 flex gap-4 items-center transition-colors hover:bg-surface-container-low transition-all active:scale-[0.98]">
+<div class="relative flex-shrink-0">
+<img class="w-[52px] h-[52px] rounded-lg object-cover" data-alt="Sleek silver mechanical gaming keyboard with RGB lights on a dark desk mat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9v2DQrbeJNEkZuybJspl7ZQ9fJ4WVIOTXgg22fdY60BnL7CMV5yWRnpOGEoCFUx0pT6CBevhnkCP1naxXCOCaQVHqhHbJcZYtyS_sjarzXx-VnLOemRlMAUn0MKb6Far_UrUO40H7PUHxMBzsegbmcsOS0DKHUC9P9ADQKNdACIg7DMURsXeTZK1Rr_xTlZCut9zCbwIUA9JHzxPocnydtXD4zpJUI6yhAoFWk5IKKwWciIUQKggqNII1CLgmr22eMnAdK9H9TK4x"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<h3 class="font-bold text-body-md text-on-surface truncate pr-2">Roberto Sanchez</h3>
+<span class="text-body-sm text-outline flex-shrink-0 font-medium">30/09</span>
+</div>
+<p class="text-body-sm text-outline truncate leading-tight mb-0.5">¿Cual es el ultimo precio?</p>
+<span class="text-[10px] font-bold text-coral uppercase tracking-wider">Teclado Mecánico</span>
+</div>
+</div>
+</div>
+</section>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-[0_-2px_10px_rgba(0,0,0,0.02)] border-t border-gray-100 dark:border-slate-800">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 scale-95 active:scale-90 transition-transform duration-150 hover:text-sky-700 dark:hover:text-sky-300" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-plus-jakarta text-[11px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 scale-95 active:scale-90 transition-transform duration-150 hover:text-sky-700 dark:hover:text-sky-300" href="#">
+<span class="material-symbols-outlined mb-1">search</span>
+<span class="font-plus-jakarta text-[11px] font-medium">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-sky-800 dark:text-sky-400 bg-sky-50/50 dark:bg-sky-900/20 rounded-xl px-3 py-1 scale-95 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined mb-1">chat</span>
+<span class="font-plus-jakarta text-[11px] font-medium">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 scale-95 active:scale-90 transition-transform duration-150 hover:text-sky-700 dark:hover:text-sky-300" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-plus-jakarta text-[11px] font-medium">Profile</span>
+</a>
+</nav>
+<!-- FAB (Contextual for New Message) -->
+<button class="fixed bottom-24 right-5 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-[28px]">edit_square</span>
+</button>
+</main>
+</body></html>
