@@ -95,7 +95,7 @@ export default async function Home() {
           {/* Product Grid */}
           <div className="grid grid-cols-2 gap-4">
             {displayProducts.map((p) => (
-              <ProductCard key={p.id} product={p as any} />
+              <ProductCard key={p.id} product={p as import('@/components/ProductCard').Product} />
             ))}
           </div>
         </section>
