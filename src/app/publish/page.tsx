@@ -3,13 +3,19 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { createProduct } from './actions'
 
-export default async function PublishPage() {
+export default async function PublishPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ message?: string }>
+}) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {
     redirect('/login?message=Debes iniciar sesión para publicar')
   }
+
+  const { message } = await searchParams
 
   return (
     <div className="bg-background text-foreground font-sans min-h-screen pb-24 antialiased">
@@ -27,6 +33,11 @@ export default async function PublishPage() {
 
       {/* Main Content Area */}
       <main className="pt-24 px-6 max-w-md mx-auto">
+        {message && (
+          <div className="bg-error/10 border border-error text-error text-sm font-bold p-4 rounded-xl mb-6">
+            🚨 {message}
+          </div>
+        )}
         <form action={createProduct} className="flex flex-col gap-5">
           
           <div className="flex flex-col gap-2">

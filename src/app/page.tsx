@@ -74,10 +74,10 @@ export default async function Home({
         <section>
           <div className="flex justify-between items-center mb-6">
             <h2 className="font-bold text-2xl text-foreground">Cerca de ti</h2>
-            <button className="flex items-center gap-1 text-foreground/60 hover:text-primary transition-colors">
+            <Link href="/search" className="flex items-center gap-1 text-foreground/60 hover:text-primary transition-colors">
               <span className="text-xl">⚙️</span>
               <span className="text-xs font-semibold">Filtrar</span>
-            </button>
+            </Link>
           </div>
 
           {/* Product Grid */}

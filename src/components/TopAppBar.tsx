@@ -8,10 +8,10 @@ export function TopAppBar() {
         <h1 className="text-primary font-black text-2xl tracking-tight italic">ArenitaShop</h1>
       </Link>
       <div className="flex items-center gap-4">
-        <button className="relative hover:bg-surface-dim transition-colors p-2 rounded-full active:scale-95 duration-150">
+        <Link href="/settings/notifications" className="relative hover:bg-surface-dim transition-colors p-2 rounded-full active:scale-95 duration-150 block">
           <span className="text-foreground/60 font-bold text-lg">🔔</span>
           <span className="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-white"></span>
-        </button>
+        </Link>
         <Link href="/profile" className="w-8 h-8 rounded-full overflow-hidden border border-border bg-surface-dim flex items-center justify-center">
           <span className="text-sm">👤</span>
         </Link>

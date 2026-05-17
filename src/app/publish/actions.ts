@@ -15,20 +15,28 @@ export async function createProduct(formData: FormData) {
   }
 
   const title = formData.get('title') as string
-  const price = parseFloat(formData.get('price') as string)
+  
+  let rawPrice = formData.get('price') as string
+  if (rawPrice) {
+    rawPrice = rawPrice.replace(',', '.') // European decimal format fix
+  }
+  const price = parseFloat(rawPrice)
+
   const category = formData.get('category') as string
   const condition = formData.get('condition') as string
-  const location = formData.get('location') as string
   const description = formData.get('description') as string
   let imageUrl = formData.get('imageUrl') as string
 
   // Handle default image or array
   const images = imageUrl ? [imageUrl] : []
 
-  // Add dummy timeAgo for visual purposes, normally this is derived from created_at
-  const timeAgo = 'Justo ahora'
+  // HEAL PROFILE: Ensure the user's profile exists in the profiles table to avoid foreign key errors
+  await supabase.from('profiles').upsert({
+    id: user.id,
+    full_name: user.user_metadata?.full_name || 'Usuario Vendedor'
+  })
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('products')
     .insert({
       seller_id: user.id,
@@ -39,11 +47,10 @@ export async function createProduct(formData: FormData) {
       description,
       images
     })
-    .select()
 
   if (error) {
     console.error('Error creating product:', error)
-    redirect('/publish?message=Error al publicar el producto')
+    redirect(`/publish?message=${encodeURIComponent(error.message || 'Error al publicar el producto')}`)
   }
 
   revalidatePath('/', 'layout')
