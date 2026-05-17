@@ -16,10 +16,10 @@ export function BottomNav() {
   return (
     <>
       {/* Floating Action Button (FAB) */}
-      <button className="fixed bottom-24 right-6 bg-primary-container text-white flex items-center gap-2 px-6 py-4 rounded-3xl shadow-lg shadow-primary-container/30 active:scale-90 transition-transform z-[60]">
+      <Link href="/publish" className="fixed bottom-24 right-6 bg-primary-container text-white flex items-center gap-2 px-6 py-4 rounded-3xl shadow-lg shadow-primary-container/30 active:scale-90 transition-transform z-[60]">
         <span className="font-bold text-xl">+</span>
         <span className="font-bold text-base">Publicar</span>
-      </button>
+      </Link>
 
       {/* Bottom Nav Bar */}
       <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 h-20 bg-background/90 backdrop-blur-md border-t border-border shadow-ambient rounded-t-3xl">

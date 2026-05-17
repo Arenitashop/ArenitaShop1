@@ -5,10 +5,10 @@ import { notFound } from 'next/navigation'
 export default async function ProductDetailPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
   const supabase = await createClient()
-  const { id } = params
+  const { id } = await params
 
   // Fetch product and seller info
   const { data: product } = await supabase
@@ -23,23 +23,11 @@ export default async function ProductDetailPage({
     .eq('id', id)
     .single()
 
-  // Dummy fallback for UI testing if no DB data
-  const p = product || {
-    id: id,
-    title: 'Vintage Film Camera - Excellent Condition',
-    price: 120.0,
-    description: 'Preciosa cámara de película vintage en un estado estético y funcional excelente. Ideal para amantes de la fotografía analógica. Lente limpia sin hongos ni rayones. Incluye funda de cuero original y correa. Una pieza de colección lista para usar.',
-    category: 'Electrónica',
-    condition: 'Usado',
-    location: 'Madrid',
-    timeAgo: 'hace 2 días',
-    images: ['https://lh3.googleusercontent.com/aida-public/AB6AXuAAhNr4uR8v0zifIAdL-I82nI9umSORDtjvgAkJirrsR15UGfiBS4F3eVy3C8MhzSlRmFvk3hqWkgYfS8pgIcjrH5GAgCx1QSsTko6F6z5LeviMaxqjeo5Z2xDuJ78cuZfvmiPLWMWLKtD6GQv-9r-1UvYbs7-cwvPDo857N9X7IXJFB0Cqh0phHa7N1sY0TN8k7K9IT3UDT0zqMbukSW-J3APWnkcfuGIJflCdW3xBnn4aJ9OqODzk6bUdgewL_FOEeg34FCDY7c5x'],
-    profiles: {
-      full_name: 'Carlos G.',
-      avatar_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwOwdUxyXTL_4eiba4bWwe8yFC772GZiWvfTeYsNBfB5NvQHUyphfGGJxEau5IXHJSsYz4uAnckT4IuDYw-dh5bUAX-UgiTzXKyBS3QcLUyAbDxoP-xXuEBRwiMjD0Vt1MX0ORKot4h7XOooxHxnFTOlKJp91_uzOYSBSE0uG-rvPcGSt2UrcVs_z3iiki5d23zasryEoRKmBwPWORQiq5hUIsSqSU8hi7_LddvAaXBVbK4eA6fBlSaz1QhGtfW8HrDp9pZf-N4j3U'
-    }
+  if (!product) {
+    return notFound()
   }
 
+  const p = product
   const imageUrl = p.images?.[0] || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80'
   const avatarUrl = p.profiles?.avatar_url || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80'
 

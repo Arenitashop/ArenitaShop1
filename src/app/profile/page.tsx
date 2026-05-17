@@ -89,15 +89,6 @@ export default async function ProfilePage() {
             </Link>
           </div>
 
-          <form action="/auth/signout" method="post" className="pt-4">
-            <button 
-              type="submit"
-              className="w-full py-4 flex items-center justify-center gap-2 text-error font-bold rounded-xl hover:bg-error/10 active:scale-95 transition-all"
-            >
-              <span>🚪</span>
-              Cerrar sesión
-            </button>
-          </form>
         </section>
       </main>
 
