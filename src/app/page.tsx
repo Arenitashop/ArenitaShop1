@@ -1,17 +1,29 @@
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { TopAppBar } from '@/components/TopAppBar'
 import { BottomNav } from '@/components/BottomNav'
 import { ProductCard } from '@/components/ProductCard'
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>
+}) {
   const supabase = await createClient()
+  const { category } = await searchParams
 
-  // Fetch products from Supabase
-  const { data: products } = await supabase
+  let supabaseQuery = supabase
     .from('products')
     .select('*')
     .order('created_at', { ascending: false })
     .limit(10)
+
+  if (category) {
+    supabaseQuery = supabaseQuery.eq('category', category)
+  }
+
+  // Fetch products from Supabase
+  const { data: products } = await supabaseQuery
 
   const displayProducts = products || []
 
@@ -36,13 +48,24 @@ export default async function Home() {
         {/* Category Chips */}
         <section className="mb-8 -mx-5 px-5 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <div className="flex gap-3 whitespace-nowrap">
-            <button className="px-6 py-2 rounded-full bg-primary-container text-white font-semibold text-sm shadow-md active:scale-95 transition-transform">
+            <Link 
+              href="/"
+              className={`px-6 py-2 rounded-full font-semibold text-sm active:scale-95 transition-transform ${
+                !category ? 'bg-primary-container text-white shadow-md' : 'bg-white text-foreground/70 border border-border hover:bg-surface-dim'
+              }`}
+            >
               Todos
-            </button>
+            </Link>
             {['Electrónica', 'Ropa', 'Hogar', 'Vehículos', 'Deportes'].map((cat) => (
-              <button key={cat} className="px-6 py-2 rounded-full bg-white text-foreground/70 font-semibold text-sm border border-border hover:bg-surface-dim transition-colors active:scale-95">
+              <Link 
+                key={cat} 
+                href={`/?category=${cat}`}
+                className={`px-6 py-2 rounded-full font-semibold text-sm transition-colors active:scale-95 ${
+                  category === cat ? 'bg-primary-container text-white shadow-md' : 'bg-white text-foreground/70 border border-border hover:bg-surface-dim'
+                }`}
+              >
                 {cat}
-              </button>
+              </Link>
             ))}
           </div>
         </section>
@@ -59,9 +82,10 @@ export default async function Home() {
 
           {/* Product Grid */}
           <div className="grid grid-cols-2 gap-4">
-            {displayProducts.map((p) => (
-              <ProductCard key={p.id} product={p as import('@/components/ProductCard').Product} />
-            ))}
+            {displayProducts.map((p) => {
+              const productWithImage = { ...p, imageUrl: p.images?.[0] }
+              return <ProductCard key={p.id} product={productWithImage as import('@/components/ProductCard').Product} />
+            })}
           </div>
         </section>
       </main>

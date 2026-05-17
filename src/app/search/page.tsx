@@ -63,9 +63,10 @@ export default async function SearchPage({
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-4">
-            {displayProducts.map((p) => (
-              <ProductCard key={p.id} product={p as import('@/components/ProductCard').Product} />
-            ))}
+            {displayProducts.map((p) => {
+              const productWithImage = { ...p, imageUrl: p.images?.[0] }
+              return <ProductCard key={p.id} product={productWithImage as import('@/components/ProductCard').Product} />
+            })}
           </div>
         )}
       </main>

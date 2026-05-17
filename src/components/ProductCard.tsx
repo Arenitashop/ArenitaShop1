@@ -1,6 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
+import { toggleFavorite } from '@/app/favorites/actions'
 
 export interface Product {
   id: string
@@ -9,11 +11,26 @@ export interface Product {
   location?: string
   timeAgo?: string
   imageUrl?: string
+  isFavorited?: boolean
 }
 
 export function ProductCard({ product }: { product: Product }) {
-  // Use a placeholder if no image
+  const [isFavorited, setIsFavorited] = useState(product.isFavorited || false)
   const image = product.imageUrl || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80'
+
+  const handleFavoriteClick = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    setIsFavorited(!isFavorited) // optimistic UI update
+    
+    const result = await toggleFavorite(product.id)
+    if (result?.error) {
+      // Revert if error
+      setIsFavorited(isFavorited)
+      if (result.error.includes('SQL')) {
+        alert(result.error) // specific alert for SQL setup
+      }
+    }
+  }
 
   return (
     <article className="bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
@@ -26,12 +43,9 @@ export function ProductCard({ product }: { product: Product }) {
           />
           <button 
             className="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-foreground/40 hover:text-primary-container active:scale-90 transition-all z-10"
-            onClick={(e) => {
-              e.preventDefault();
-              // Toggle favorite logic
-            }}
+            onClick={handleFavoriteClick}
           >
-            <span className="text-lg">❤️</span>
+            <span className={`text-lg transition-colors ${isFavorited ? 'text-red-500' : ''}`}>❤️</span>
           </button>
         </div>
         <div className="p-3">

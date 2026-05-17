@@ -16,29 +16,29 @@ export default function SettingsPage() {
 
       <main className="pt-24 px-5 max-w-[500px] mx-auto">
         <section className="bg-white rounded-2xl border border-border overflow-hidden mb-6">
-          <div className="flex items-center justify-between p-4 border-b border-border hover:bg-surface-dim transition-colors cursor-pointer">
+          <Link href="/settings/notifications" className="flex items-center justify-between p-4 border-b border-border hover:bg-surface-dim transition-colors cursor-pointer block">
             <div className="flex items-center gap-3">
               <span className="text-xl">🔔</span>
               <span className="font-semibold text-foreground">Notificaciones</span>
             </div>
             <span className="text-foreground/40">→</span>
-          </div>
+          </Link>
           
-          <div className="flex items-center justify-between p-4 border-b border-border hover:bg-surface-dim transition-colors cursor-pointer">
+          <Link href="/settings/privacy" className="flex items-center justify-between p-4 border-b border-border hover:bg-surface-dim transition-colors cursor-pointer block">
             <div className="flex items-center gap-3">
               <span className="text-xl">🔒</span>
               <span className="font-semibold text-foreground">Privacidad y Seguridad</span>
             </div>
             <span className="text-foreground/40">→</span>
-          </div>
+          </Link>
 
-          <div className="flex items-center justify-between p-4 hover:bg-surface-dim transition-colors cursor-pointer">
+          <Link href="/settings/language" className="flex items-center justify-between p-4 hover:bg-surface-dim transition-colors cursor-pointer block">
             <div className="flex items-center gap-3">
               <span className="text-xl">🌍</span>
               <span className="font-semibold text-foreground">Idioma y Región</span>
             </div>
             <span className="text-foreground/40">→</span>
-          </div>
+          </Link>
         </section>
 
         <section className="bg-white rounded-2xl border border-border overflow-hidden">

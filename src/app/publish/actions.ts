@@ -36,10 +36,8 @@ export async function createProduct(formData: FormData) {
       price,
       category,
       condition,
-      location,
       description,
-      images,
-      timeAgo
+      images
     })
     .select()
 
