@@ -18,9 +18,10 @@ export default async function Home({
     .order('created_at', { ascending: false })
     .limit(10)
 
-  if (category) {
-    supabaseQuery = supabaseQuery.eq('category', category)
-  }
+  // Filter by category currently disabled as 'category' column doesn't exist
+  // if (category) {
+  //   supabaseQuery = supabaseQuery.eq('category', category)
+  // }
 
   // Fetch products from Supabase
   const { data: products } = await supabaseQuery

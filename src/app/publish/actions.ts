@@ -27,6 +27,8 @@ export async function createProduct(formData: FormData) {
   const description = formData.get('description') as string
   let imageUrl = formData.get('imageUrl') as string
 
+  const location = formData.get('location') as string
+
   // Handle default image or array
   const images = imageUrl ? [imageUrl] : []
 
@@ -42,7 +44,7 @@ export async function createProduct(formData: FormData) {
       seller_id: user.id,
       title,
       price,
-      category,
+      location,
       condition,
       description,
       images
