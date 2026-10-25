@@ -25,7 +25,7 @@ export async function createProduct(formData: FormData) {
   const category = formData.get('category') as string
   const condition = formData.get('condition') as string
   const description = formData.get('description') as string
-  let imageUrl = formData.get('imageUrl') as string
+  const imageUrl = formData.get('imageUrl') as string
 
   const location = formData.get('location') as string
 

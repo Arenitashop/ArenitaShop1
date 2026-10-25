@@ -8,6 +8,24 @@ interface Message {
   time?: string
 }
 
+interface VisionResult {
+  title: string
+  suggestedPrice: number
+  description: string
+  category: string
+  condition: string
+  reasoning?: string
+}
+
+interface TextAnalysisResult {
+  headline: string
+  verdict: 'excelente' | 'bueno' | 'regular' | 'cautela'
+  score: number
+  pros: string[]
+  cons: string[]
+  buyerAdvice: string
+}
+
 export function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeTab, setActiveTab] = useState<'chat' | 'vision' | 'text'>('chat')
@@ -29,14 +47,14 @@ export function AIAssistant() {
   // Vision tab state
   const [visionImage, setVisionImage] = useState<string | null>(null)
   const [visionMimeType, setVisionMimeType] = useState('image/jpeg')
-  const [visionResult, setVisionResult] = useState<any | null>(null)
+  const [visionResult, setVisionResult] = useState<VisionResult | null>(null)
   const [isVisionLoading, setIsVisionLoading] = useState(false)
   const [visionPrompt, setVisionPrompt] = useState('')
 
   // Text analysis tab state
   const [analysisText, setAnalysisText] = useState('')
   const [analysisPrice, setAnalysisPrice] = useState('')
-  const [analysisResult, setAnalysisResult] = useState<any | null>(null)
+  const [analysisResult, setAnalysisResult] = useState<TextAnalysisResult | null>(null)
   const [isAnalysisLoading, setIsAnalysisLoading] = useState(false)
 
   // Cargar clave guardada del localStorage
@@ -102,12 +120,13 @@ export function AIAssistant() {
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         },
       ])
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'No se pudo contactar a Gemini API'
       setMessages([
         ...newMessages,
         {
           role: 'model',
-          text: `⚠️ **Aviso del Cerebro IA**: ${err.message || 'No se pudo contactar a Gemini API'}. Recuerda configurar tu API Key de Google AI Studio si aún no está activa.`,
+          text: `⚠️ **Aviso del Cerebro IA**: ${msg}. Recuerda configurar tu API Key de Google AI Studio si aún no está activa.`,
           time: 'Error',
         },
       ])
@@ -153,8 +172,9 @@ export function AIAssistant() {
       if (!res.ok || data.error) throw new Error(data.error || 'Error analizando imagen')
 
       setVisionResult(data.data)
-    } catch (err: any) {
-      alert(`Error con Google Gemini Vision: ${err.message}`)
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Error analizando imagen'
+      alert(`Error con Google Gemini Vision: ${msg}`)
     } finally {
       setIsVisionLoading(false)
     }
@@ -184,8 +204,9 @@ export function AIAssistant() {
       if (!res.ok || data.error) throw new Error(data.error || 'Error analizando texto')
 
       setAnalysisResult(data.data)
-    } catch (err: any) {
-      alert(`Error en análisis de texto: ${err.message}`)
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Error analizando texto'
+      alert(`Error en análisis de texto: ${msg}`)
     } finally {
       setIsAnalysisLoading(false)
     }

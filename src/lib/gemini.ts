@@ -67,7 +67,7 @@ export async function callGeminiApi({
   systemInstruction?: string
   apiKey?: string
   temperature?: number
-  responseSchema?: Record<string, any>
+  responseSchema?: Record<string, unknown>
 }): Promise<string> {
   const resolvedKey = getGeminiApiKey(apiKey)
 
@@ -77,7 +77,7 @@ export async function callGeminiApi({
     )
   }
 
-  const payload: Record<string, any> = {
+  const payload: Record<string, unknown> = {
     contents,
     generationConfig: {
       temperature,
@@ -92,13 +92,13 @@ export async function callGeminiApi({
   }
 
   if (responseSchema) {
-    payload.generationConfig.responseMimeType = 'application/json'
-    payload.generationConfig.responseSchema = responseSchema
+    (payload.generationConfig as Record<string, unknown>).responseMimeType = 'application/json';
+    (payload.generationConfig as Record<string, unknown>).responseSchema = responseSchema
   }
 
   // Intentar con modelo primario y si falla, probar con fallback
   const models = [PRIMARY_MODEL, FALLBACK_MODEL]
-  let lastError: any = null
+  let lastError: unknown = null
 
   for (const model of models) {
     try {
@@ -126,17 +126,18 @@ export async function callGeminiApi({
       }
 
       return text
-    } catch (err: any) {
+    } catch (err: unknown) {
       lastError = err
-      console.warn(`Intento fallido con modelo ${model}:`, err.message)
+      const msg = err instanceof Error ? err.message : String(err)
+      console.warn(`Intento fallido con modelo ${model}:`, msg)
       // Si el error es de clave inválida, no tiene sentido reintentar con otro modelo
-      if (err.message && err.message.includes('API key not valid')) {
+      if (msg.includes('API key not valid')) {
         throw err
       }
     }
   }
 
-  throw lastError || new Error('No se pudo conectar con Google AI Studio.')
+  throw (lastError instanceof Error ? lastError : new Error('No se pudo conectar con Google AI Studio.'))
 }
 
 /**
@@ -307,15 +308,19 @@ export async function chatWithArenitaAI({
 }: {
   message: string
   history?: { role: 'user' | 'model'; text: string }[]
-  contextProducts?: any[]
+  contextProducts?: Record<string, unknown>[]
   apiKey?: string
 }): Promise<string> {
   const productsSummary = contextProducts
     .slice(0, 10)
-    .map(
-      (p) =>
-        `- ${p.title} (${p.price} €, Estado: ${p.condition || 'N/A'}, Categoría: ${p.category || 'N/A'}, ID: ${p.id})`
-    )
+    .map((p) => {
+      const title = String(p.title || 'Artículo')
+      const price = p.price !== undefined ? String(p.price) : '0'
+      const condition = p.condition ? String(p.condition) : 'N/A'
+      const category = p.category ? String(p.category) : 'N/A'
+      const id = p.id ? String(p.id) : ''
+      return `- ${title} (${price} €, Estado: ${condition}, Categoría: ${category}, ID: ${id})`
+    })
     .join('\n')
 
   const systemInstruction = `

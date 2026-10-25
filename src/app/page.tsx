@@ -12,7 +12,7 @@ export default async function Home({
   const supabase = await createClient()
   const { category } = await searchParams
 
-  let supabaseQuery = supabase
+  const supabaseQuery = supabase
     .from('products')
     .select('*')
     .order('created_at', { ascending: false })

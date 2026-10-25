@@ -2,6 +2,16 @@
 
 import React, { useState } from 'react'
 
+interface AnalysisData {
+  verdict: 'excelente' | 'bueno' | 'regular' | 'cautela'
+  score: number
+  headline: string
+  pros: string[]
+  cons: string[]
+  buyerAdvice: string
+  fairPriceEstimate: string
+}
+
 export function ProductAIAnalysis({
   title,
   price,
@@ -15,7 +25,7 @@ export function ProductAIAnalysis({
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [analysis, setAnalysis] = useState<any | null>(null)
+  const [analysis, setAnalysis] = useState<AnalysisData | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const handleAnalyze = async () => {
@@ -50,8 +60,9 @@ export function ProductAIAnalysis({
       }
 
       setAnalysis(data.data)
-    } catch (err: any) {
-      setError(err.message || 'No se pudo completar el análisis.')
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'No se pudo completar el análisis.'
+      setError(msg)
     } finally {
       setIsLoading(false)
     }

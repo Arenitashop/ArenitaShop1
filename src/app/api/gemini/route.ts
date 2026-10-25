@@ -60,7 +60,7 @@ export async function POST(request: Request) {
       }
 
       // Obtener productos reales de la tienda para que la IA sepa qué hay disponible
-      let contextProducts: any[] = []
+      let contextProducts: Record<string, unknown>[] = []
       try {
         const supabase = await createClient()
         const { data } = await supabase
@@ -68,8 +68,8 @@ export async function POST(request: Request) {
           .select('id, title, price, condition, category')
           .order('created_at', { ascending: false })
           .limit(10)
-        contextProducts = data || []
-      } catch (e) {
+        contextProducts = (data as Record<string, unknown>[]) || []
+      } catch {
         // Ignorar si falla la consulta y continuar con el chat
       }
 
@@ -87,11 +87,12 @@ export async function POST(request: Request) {
       { error: `Acción no soportada: ${action}` },
       { status: 400 }
     )
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : 'Error procesando solicitud con Google Gemini.'
     console.error('Error en /api/gemini:', error)
     return NextResponse.json(
       {
-        error: error.message || 'Error procesando solicitud con Google Gemini.',
+        error: errorMsg,
       },
       { status: 500 }
     )

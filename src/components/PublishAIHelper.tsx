@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 export function PublishAIHelper() {
   const [prompt, setPrompt] = useState('')
@@ -9,6 +9,38 @@ export function PublishAIHelper() {
   const [errorInfo, setErrorInfo] = useState<string | null>(null)
   const [imageFile, setImageFile] = useState<string | null>(null)
   const [imageMime, setImageMime] = useState('image/jpeg')
+
+  const applyDataToForm = useCallback(
+    (data: {
+      title?: string
+      suggestedPrice?: number
+      description?: string
+      category?: string
+      condition?: string
+    }) => {
+      if (data.title) {
+        const el = document.getElementById('title') as HTMLInputElement | null
+        if (el) el.value = data.title
+      }
+      if (data.suggestedPrice !== undefined) {
+        const el = document.getElementById('price') as HTMLInputElement | null
+        if (el) el.value = data.suggestedPrice.toString()
+      }
+      if (data.description) {
+        const el = document.getElementById('description') as HTMLTextAreaElement | null
+        if (el) el.value = data.description
+      }
+      if (data.category) {
+        const el = document.getElementById('category') as HTMLSelectElement | null
+        if (el) el.value = data.category
+      }
+      if (data.condition) {
+        const el = document.getElementById('condition') as HTMLSelectElement | null
+        if (el) el.value = data.condition
+      }
+    },
+    []
+  )
 
   // Autorellenar si viene desde los parámetros de URL (ej. desde el asistente de visión)
   useEffect(() => {
@@ -32,7 +64,7 @@ export function PublishAIHelper() {
         setSuccessInfo('Datos transferidos automáticamente desde Gemini Vision.')
       }, 200)
     }
-  }, [])
+  }, [applyDataToForm])
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -45,35 +77,6 @@ export function PublishAIHelper() {
       setSuccessInfo(null)
     }
     reader.readAsDataURL(file)
-  }
-
-  const applyDataToForm = (data: {
-    title?: string
-    suggestedPrice?: number
-    description?: string
-    category?: string
-    condition?: string
-  }) => {
-    if (data.title) {
-      const el = document.getElementById('title') as HTMLInputElement | null
-      if (el) el.value = data.title
-    }
-    if (data.suggestedPrice !== undefined) {
-      const el = document.getElementById('price') as HTMLInputElement | null
-      if (el) el.value = data.suggestedPrice.toString()
-    }
-    if (data.description) {
-      const el = document.getElementById('description') as HTMLTextAreaElement | null
-      if (el) el.value = data.description
-    }
-    if (data.category) {
-      const el = document.getElementById('category') as HTMLSelectElement | null
-      if (el) el.value = data.category
-    }
-    if (data.condition) {
-      const el = document.getElementById('condition') as HTMLSelectElement | null
-      if (el) el.value = data.condition
-    }
   }
 
   const handleGenerate = async () => {
@@ -111,8 +114,9 @@ export function PublishAIHelper() {
       setSuccessInfo(
         `¡Ficha generada con éxito por Google Gemini! Título, precio sugerido (${p.suggestedPrice} €), categoría (${p.category}) y descripción han sido completados.`
       )
-    } catch (err: any) {
-      setErrorInfo(err.message || 'No se pudo conectar con Gemini API.')
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'No se pudo conectar con Gemini API.'
+      setErrorInfo(msg)
     } finally {
       setIsLoading(false)
     }
