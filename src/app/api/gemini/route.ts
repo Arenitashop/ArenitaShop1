@@ -63,14 +63,17 @@ export async function POST(request: Request) {
       let contextProducts: Record<string, unknown>[] = []
       try {
         const supabase = await createClient()
-        const { data } = await supabase
+        const { data, error } = await supabase
           .from('products')
-          .select('id, title, price, condition, category')
+          .select('*')
           .order('created_at', { ascending: false })
           .limit(10)
-        contextProducts = (data as Record<string, unknown>[]) || []
-      } catch {
-        // Ignorar si falla la consulta y continuar con el chat
+
+        if (!error && data) {
+          contextProducts = data as Record<string, unknown>[]
+        }
+      } catch (e) {
+        console.warn('Error cargando catálogo para IA:', e)
       }
 
       const reply = await chatWithArenitaAI({

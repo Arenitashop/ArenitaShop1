@@ -46,6 +46,40 @@ export interface AnalyzeProductResult {
 let cachedWorkingModel: string | null = null
 
 /**
+ * Limpia y sanitiza la salida de la IA para eliminar pensamientos internos,
+ * borradores (*Draft:*), notas de rol o autocríticas.
+ */
+export function cleanOutputText(raw: string): string {
+  let cleaned = raw.trim()
+
+  // 1. Eliminar bloques <thought>...</thought>
+  cleaned = cleaned.replace(/<thought>[\s\S]*?<\/thought>/gi, '')
+
+  // 2. Si el modelo imprimió borradores internos tipo *Draft:* o Draft:
+  if (/(\*Draft:\*|Draft:)/i.test(cleaned)) {
+    const parts = cleaned.split(/(\*Draft:\*|Draft:)/i)
+    if (parts.length >= 3) {
+      cleaned = parts.slice(2).join('').trim()
+    }
+  }
+
+  // 3. Eliminar autocríticas finales como *(Self-correction: ...)* o (Self-correction: ...)
+  cleaned = cleaned.replace(/\*?\s*\(Self-correction:[\s\S]*?\)\s*\*?/gi, '')
+
+  // 4. Eliminar notas en inglés de rol que se hayan colado al inicio
+  cleaned = cleaned.replace(/^[^\n]*\(Warm,\s*enthusiastic[^\n]*\)/i, '')
+  cleaned = cleaned.replace(/The prompt says[\s\S]*?\*Draft:\*/i, '')
+  cleaned = cleaned.replace(/^\s*\*\s*Option\s+[A-Z][\s\S]*?(¡|Hola|¿)/i, '$1')
+
+  // 5. Eliminar comillas dobles si envolvieron toda la respuesta
+  if (cleaned.startsWith('"') && cleaned.endsWith('"')) {
+    cleaned = cleaned.slice(1, -1).trim()
+  }
+
+  return cleaned.trim()
+}
+
+/**
  * Obtiene la API Key de Gemini desde los parámetros o variables de entorno
  */
 export function getGeminiApiKey(customKey?: string): string | null {
@@ -212,11 +246,26 @@ export async function callGeminiApi({
         }
 
         const data = await response.json()
-        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text
+        const parts = (data?.candidates?.[0]?.content?.parts || []) as Array<{
+          text?: string
+          thought?: boolean
+        }>
 
-        if (!text) {
+        // Filtrar partes que sean pensamiento interno ('thought: true')
+        const nonThoughtParts = parts.filter((p) => !p.thought && p.text)
+        let rawText = ''
+
+        if (nonThoughtParts.length > 0) {
+          rawText = nonThoughtParts.map((p) => p.text).join('\n')
+        } else if (parts.length > 0) {
+          rawText = parts[parts.length - 1]?.text || ''
+        }
+
+        if (!rawText.trim()) {
           throw new Error(`El modelo ${model} no generó ninguna respuesta de texto.`)
         }
+
+        const text = cleanOutputText(rawText)
 
         // Modelo verificado con éxito, lo guardamos en caché
         cachedWorkingModel = model
@@ -408,32 +457,32 @@ export async function chatWithArenitaAI({
   contextProducts?: Record<string, unknown>[]
   apiKey?: string
 }): Promise<string> {
-  const productsSummary = contextProducts
-    .slice(0, 10)
-    .map((p) => {
-      const title = String(p.title || 'Artículo')
-      const price = p.price !== undefined ? String(p.price) : '0'
-      const condition = p.condition ? String(p.condition) : 'N/A'
-      const category = p.category ? String(p.category) : 'N/A'
-      const id = p.id ? String(p.id) : ''
-      return `- ${title} (${price} €, Estado: ${condition}, Categoría: ${category}, ID: ${id})`
-    })
-    .join('\n')
+  const productsSummary = contextProducts.length > 0
+    ? contextProducts
+        .slice(0, 10)
+        .map((p) => {
+          const title = String(p.title || 'Artículo')
+          const price = p.price !== undefined ? `${p.price} €` : 'Consultar precio'
+          const condition = p.condition ? String(p.condition) : 'Buen estado'
+          return `- ${title} (${price}, Estado: ${condition})`
+        })
+        .join('\n')
+    : 'Artículos variados de electrónica, moda, deportes y hogar en el catálogo.'
 
   const systemInstruction = `
-Eres "Arenita AI", el Cerebro Inteligente y asistente virtual oficial de ArenitaShop (un marketplace costero, moderno y seguro tipo Temu/Wallapop).
-Tu misión es guiar, asesorar y ayudar a los usuarios a encontrar los mejores chollos, resolver dudas sobre cómo publicar artículos y consejos de compra/venta.
+Eres "Arenita AI", el Cerebro Inteligente y asistente de compras de ArenitaShop (un marketplace costero, alegre, moderno y seguro tipo Temu/Wallapop).
+Tu misión es aconsejar y ayudar a los usuarios a encontrar los mejores chollos, recomendar artículos y dar tips de compra y venta.
 
-Personalidad: Cálida, entusiasta, veraniega, muy educada, inteligente y directa. Usa emojis apropiados (🏖️, 🌊, 🐚, ✨, 🛍️).
+Personalidad: Cálida, entusiasta, veraniega, muy educada, inteligente y directa. Usa emojis costeros (🏖️, 🌊, 🐚, ✨, 🛍️).
 
-Catálogo actual disponible en la tienda (referencia para recomendar):
-${productsSummary || 'Varios artículos disponibles en el catálogo principal.'}
+Catálogo disponible en la tienda actualmente:
+${productsSummary}
 
-Reglas:
-1. Responde de forma concisa y fácil de leer (máximo 2 o 3 párrafos cortos).
-2. Si te preguntan qué comprar o recomendaciones, cita artículos del catálogo cuando sea relevante.
-3. Si el usuario te pide consejos para vender, explícale cómo publicar fotos claras y fijar un buen precio.
-4. Recuerda que la plataforma cuenta con publicación inteligente con IA y visión por computadora con Google Gemini.
+REGLAS ESTRICTAS DE RESPUESTA:
+1. Responde SIEMPRE 100% en español directamente al usuario.
+2. PROHIBIDO terminantemente escribir en inglés, volcar pensamientos internos, hacer listas de opciones A/B/C, poner borradores (*Draft:*), notas de rol o autocríticas como (Self-correction).
+3. Tu respuesta debe ser limpia, natural y comenzar directamente con tu saludo o respuesta (máximo 2 o 3 párrafos cortos y amigables).
+4. Si te piden recomendaciones, sugiere artículos reales del catálogo de arriba o categorías veraniegas atractivas.
 `
 
   const contents: GeminiContent[] = []
