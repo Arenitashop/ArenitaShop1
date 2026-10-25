@@ -57,15 +57,15 @@ export default async function Home({
             >
               Todos
             </Link>
-            {['Electrónica', 'Ropa', 'Hogar', 'Vehículos', 'Deportes'].map((cat) => (
+            {[{name:'Electrónica',icon:'📱'},{name:'Ropa',icon:'👕'},{name:'Hogar',icon:'🏡'},{name:'Vehículos',icon:'🚗'},{name:'Deportes',icon:'⚽'}].map((catObj) => (
               <Link 
-                key={cat} 
-                href={`/?category=${cat}`}
+                key={catObj.name} 
+                href={`/?category=${catObj.name}`}
                 className={`px-6 py-2 rounded-full font-semibold text-sm transition-colors active:scale-95 ${
-                  category === cat ? 'bg-primary-container text-white shadow-md' : 'bg-white text-foreground/70 border border-border hover:bg-surface-dim'
+                  category === catObj.name ? 'bg-primary-container text-white shadow-md' : 'bg-white text-foreground/70 border border-border hover:bg-surface-dim'
                 }`}
               >
-                {cat}
+                {catObj.icon} {catObj.name}
               </Link>
             ))}
           </div>
@@ -87,6 +87,13 @@ export default async function Home({
               const productWithImage = { ...p, imageUrl: p.images?.[0] }
               return <ProductCard key={p.id} product={productWithImage as import('@/components/ProductCard').Product} />
             })}
+            {displayProducts.length === 0 && (
+              <div className="col-span-2 flex flex-col items-center justify-center py-16 text-center">
+                <span className="text-6xl mb-4">🏖️</span>
+                <h3 className="font-bold text-xl text-foreground mb-2">Aún no hay productos</h3>
+                <p className="text-foreground/50 text-sm max-w-[250px]">Sé el primero en publicar algo increíble en la comunidad.</p>
+              </div>
+            )}
           </div>
         </section>
       </main>

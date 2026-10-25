@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
+import { ProductAIAnalysis } from '@/components/ProductAIAnalysis'
 
 export default async function ProductDetailPage({
   params,
@@ -28,6 +29,7 @@ export default async function ProductDetailPage({
   }
 
   const p = product
+  const timeAgo = p.created_at ? new Date(p.created_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }) : 'Reciente'
   const imageUrl = p.images?.[0] || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80'
   const avatarUrl = p.profiles?.avatar_url || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80'
 
@@ -57,6 +59,7 @@ export default async function ProductDetailPage({
           alt={p.title} 
           className="w-full h-full object-cover" 
           src={imageUrl} 
+          loading="lazy"
         />
         {/* Carousel Indicators (Dummy) */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
@@ -78,11 +81,7 @@ export default async function ProductDetailPage({
               <span className="px-3 py-1 bg-surface-container-high text-foreground/70 font-semibold text-xs rounded-full">
                 {p.condition || 'Usado'}
               </span>
-              {p.category && (
-                <span className="px-3 py-1 bg-surface-container-high text-foreground/70 font-semibold text-xs rounded-full">
-                  {p.category}
-                </span>
-              )}
+
             </div>
           </div>
         </div>
@@ -100,11 +99,19 @@ export default async function ProductDetailPage({
           </div>
           <div className="flex items-center gap-1.5">
             <span className="text-lg">⏱️</span>
-            <span>{p.timeAgo || 'Reciente'}</span>
+            <span>{timeAgo}</span>
           </div>
         </div>
 
         <hr className="border-border mb-6" />
+
+        {/* Cerebro Inteligente (IA): Análisis de Texto y Valoración con Gemini */}
+        <ProductAIAnalysis 
+          title={p.title} 
+          price={p.price} 
+          condition={p.condition} 
+          description={p.description} 
+        />
 
         {/* Description */}
         <section className="mb-8">
@@ -153,9 +160,9 @@ export default async function ProductDetailPage({
         </button>
         
         {/* Chat Button (Primary) */}
-        <button className="flex-1 h-12 flex items-center justify-center bg-primary-container text-white font-bold text-sm rounded-xl shadow-lg shadow-primary-container/20 hover:bg-primary transition-colors active:scale-95">
+        <Link href="/messages/new" className="flex-1 h-12 flex items-center justify-center bg-primary-container text-white font-bold text-sm rounded-xl shadow-lg shadow-primary-container/20 hover:bg-primary transition-colors active:scale-95">
           Chatear
-        </button>
+        </Link>
       </nav>
     </div>
   )

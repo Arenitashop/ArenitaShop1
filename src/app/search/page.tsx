@@ -57,17 +57,24 @@ export default async function SearchPage({
         </h2>
 
         {displayProducts.length === 0 ? (
-          <div className="text-center text-foreground/50 mt-10">
-            <span className="text-4xl mb-3 block">😕</span>
-            No se encontraron productos.
+          <div className="flex flex-col items-center justify-center py-16 text-center">
+            <span className="text-6xl mb-4">🔍</span>
+            <h3 className="font-bold text-xl text-foreground mb-2">Sin resultados</h3>
+            <p className="text-foreground/50 text-sm max-w-[250px] mb-6">No encontramos productos que coincidan con tu búsqueda. Intenta con otras palabras.</p>
+            <Link href="/" className="px-6 py-3 bg-primary-container text-white font-bold rounded-xl active:scale-95 transition-all shadow-lg shadow-primary-container/20">Explorar todo</Link>
           </div>
         ) : (
+          <>
+          {displayProducts.length > 0 && (
+            <p className="text-sm text-foreground/50 font-medium mb-4">{displayProducts.length} producto{displayProducts.length !== 1 ? 's' : ''} encontrado{displayProducts.length !== 1 ? 's' : ''}</p>
+          )}
           <div className="grid grid-cols-2 gap-4">
             {displayProducts.map((p) => {
               const productWithImage = { ...p, imageUrl: p.images?.[0] }
               return <ProductCard key={p.id} product={productWithImage as import('@/components/ProductCard').Product} />
             })}
           </div>
+          </>
         )}
       </main>
 

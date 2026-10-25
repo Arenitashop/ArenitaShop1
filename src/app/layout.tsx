@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { AIAssistant } from "@/components/AIAssistant";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -22,7 +23,10 @@ export default function RootLayout({
       lang="es"
       className={`${jakarta.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <AIAssistant />
+      </body>
     </html>
   );
 }

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { createProduct } from './actions'
+import { PublishAIHelper } from '@/components/PublishAIHelper'
 
 export default async function PublishPage({
   searchParams,
@@ -38,7 +39,15 @@ export default async function PublishPage({
             🚨 {message}
           </div>
         )}
+
+        {/* Cerebro Inteligente (IA): Google AI Studio / Gemini API */}
+        <PublishAIHelper />
+
         <form action={createProduct} className="flex flex-col gap-5">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-lg">📝</span>
+            <h2 className="font-bold text-base text-foreground">Información del producto</h2>
+          </div>
           
           <div className="flex flex-col gap-2">
             <label htmlFor="title" className="font-bold text-sm text-foreground">Título</label>
@@ -105,6 +114,11 @@ export default async function PublishPage({
             />
           </div>
 
+          <div className="flex items-center gap-2 mb-1 mt-2">
+            <span className="text-lg">📸</span>
+            <h2 className="font-bold text-base text-foreground">Imagen</h2>
+          </div>
+
           <div className="flex flex-col gap-2">
             <label htmlFor="imageUrl" className="font-bold text-sm text-foreground">URL de Imagen (Opcional)</label>
             <input 
@@ -130,7 +144,7 @@ export default async function PublishPage({
 
           <button 
             type="submit" 
-            className="w-full mt-4 bg-primary text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-primary/30 active:scale-95 transition-all"
+            className="w-full mt-4 bg-gradient-to-r from-primary-container to-primary text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-primary/30 active:scale-95 transition-all"
           >
             Publicar ahora
           </button>

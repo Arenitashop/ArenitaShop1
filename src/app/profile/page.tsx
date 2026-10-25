@@ -14,7 +14,8 @@ export default async function ProfilePage() {
   // Get user info
   const fullName = user.user_metadata?.full_name || 'Usuario'
   const email = user.email
-  const avatarUrl = user.user_metadata?.avatar_url || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80'
+  const avatarUrl = user.user_metadata?.avatar_url || ''
+  const initial = fullName.charAt(0).toUpperCase()
 
   return (
     <div className="bg-background text-foreground font-sans min-h-screen pb-24 antialiased">
@@ -36,20 +37,30 @@ export default async function ProfilePage() {
         {/* Profile Card */}
         <section className="bg-white rounded-3xl shadow-sm border border-border p-6 mb-8 flex flex-col items-center">
           <div className="relative mb-4">
-            <img 
-              alt="User Avatar" 
-              className="w-24 h-24 rounded-full object-cover border-4 border-surface-dim" 
-              src={avatarUrl} 
-            />
+            {avatarUrl ? (
+              <img 
+                alt="User Avatar" 
+                className="w-24 h-24 rounded-full object-cover border-4 border-surface-dim" 
+                src={avatarUrl} 
+              />
+            ) : (
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center text-4xl text-white font-bold border-4 border-surface-dim shadow-lg">
+                {initial || '👤'}
+              </div>
+            )}
             <div className="absolute bottom-1 right-1 w-6 h-6 bg-green-500 border-2 border-white rounded-full"></div>
           </div>
           
           <h2 className="font-extrabold text-2xl text-foreground text-center mb-1">
             {fullName}
           </h2>
-          <p className="text-foreground/60 text-sm font-medium text-center mb-6">
+          <p className="text-foreground/60 text-sm font-medium text-center mb-2">
             {email}
           </p>
+          <div className="flex items-center gap-1.5 mt-2 mb-6">
+            <span className="text-xs">✨</span>
+            <span className="text-foreground/40 text-xs font-semibold">Miembro desde 2025</span>
+          </div>
           
           <Link 
             href="/profile/edit"
@@ -76,6 +87,14 @@ export default async function ProfilePage() {
               <div className="flex items-center gap-3">
                 <span className="text-xl">❤️</span>
                 <span className="font-semibold text-foreground">Favoritos</span>
+              </div>
+              <span className="text-foreground/40">→</span>
+            </Link>
+
+            <Link href="/" className="flex items-center justify-between p-4 border-b border-border hover:bg-surface-dim transition-colors">
+              <div className="flex items-center gap-3">
+                <span className="text-xl">📦</span>
+                <span className="font-semibold text-foreground">Mis productos</span>
               </div>
               <span className="text-foreground/40">→</span>
             </Link>
