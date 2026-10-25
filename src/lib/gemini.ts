@@ -42,8 +42,8 @@ export interface AnalyzeProductResult {
   fairPriceEstimate: string
 }
 
-const PRIMARY_MODEL = 'gemini-2.0-flash'
-const FALLBACK_MODEL = 'gemini-1.5-flash'
+// Modelo activo en caché para optimizar llamadas consecutivas
+let cachedWorkingModel: string | null = null
 
 /**
  * Obtiene la API Key de Gemini desde los parámetros o variables de entorno
@@ -54,7 +54,70 @@ export function getGeminiApiKey(customKey?: string): string | null {
 }
 
 /**
- * Llamada base a la API de Google AI Studio con soporte para reintentos y modelo de respaldo
+ * Consulta la lista oficial de modelos disponibles para la API Key dada (ModelService.ListModels)
+ * para evitar errores 404 por modelos no encontrados o deprecados.
+ */
+export async function discoverAvailableModels(apiKey: string): Promise<string[]> {
+  try {
+    const listUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`
+    const response = await fetch(listUrl, {
+      method: 'GET',
+      headers: {
+        'x-goog-api-key': apiKey,
+      },
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+      if (Array.isArray(data?.models)) {
+        const available = data.models
+          .filter((m: { supportedGenerationMethods?: string[] }) =>
+            m.supportedGenerationMethods?.includes('generateContent')
+          )
+          .map((m: { name: string }) => m.name.replace(/^models\//, ''))
+
+        if (available.length > 0) {
+          // Ordenar priorizando modelos rápidos y modernos (flash)
+          const preference = [
+            'gemini-2.5-flash',
+            'gemini-2.0-flash',
+            'gemini-2.0-flash-exp',
+            'gemini-1.5-flash-latest',
+            'gemini-2.5-flash-lite',
+            'gemini-1.5-flash',
+            'gemini-1.5-flash-8b',
+            'gemini-2.5-pro',
+            'gemini-1.5-pro',
+          ]
+
+          const sorted = [
+            ...preference.filter((p) => available.includes(p)),
+            ...available.filter((a: string) => !preference.includes(a)),
+          ]
+          return sorted
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('No se pudo autodescubrir modelos de Gemini:', err)
+  }
+
+  // Lista de fallback si la llamada a ListModels falla
+  return [
+    'gemini-2.5-flash',
+    'gemini-2.0-flash',
+    'gemini-2.0-flash-exp',
+    'gemini-1.5-flash-latest',
+    'gemini-2.5-flash-lite',
+    'gemini-1.5-flash',
+    'gemini-1.5-flash-8b',
+    'gemini-2.5-pro',
+    'gemini-1.5-pro',
+  ]
+}
+
+/**
+ * Llamada base a la API de Google AI Studio con soporte dinámico de modelos y autodescubrimiento
  */
 export async function callGeminiApi({
   contents,
@@ -73,71 +136,107 @@ export async function callGeminiApi({
 
   if (!resolvedKey) {
     throw new Error(
-      'Falta la API Key de Gemini (Google AI Studio). Configura GEMINI_API_KEY en Vercel/.env.local o ingrésala en la interfaz.'
+      'Falta la API Key de Gemini (Google AI Studio). Configura GEMINI_API_KEY en Vercel/.env.local o ingrésala en la interfaz pulsando el icono 🔑.'
     )
   }
 
-  const payload: Record<string, unknown> = {
-    contents,
-    generationConfig: {
-      temperature,
-      maxOutputTokens: 1500,
-    },
-  }
+  // Obtener lista de modelos que la API Key efectivamente soporta
+  const candidateModels = await discoverAvailableModels(resolvedKey)
+  const orderedModels = cachedWorkingModel
+    ? [cachedWorkingModel, ...candidateModels.filter((m) => m !== cachedWorkingModel)]
+    : candidateModels
 
-  if (systemInstruction) {
-    payload.systemInstruction = {
-      parts: [{ text: systemInstruction }],
-    }
-  }
-
-  if (responseSchema) {
-    (payload.generationConfig as Record<string, unknown>).responseMimeType = 'application/json';
-    (payload.generationConfig as Record<string, unknown>).responseSchema = responseSchema
-  }
-
-  // Intentar con modelo primario y si falla, probar con fallback
-  const models = [PRIMARY_MODEL, FALLBACK_MODEL]
   let lastError: unknown = null
 
-  for (const model of models) {
-    try {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${resolvedKey}`
+  // Probamos los modelos disponibles
+  for (const model of orderedModels) {
+    for (const apiVersion of ['v1beta', 'v1']) {
+      try {
+        let finalContents = contents
+        const payload: Record<string, unknown> = {
+          contents: finalContents,
+          generationConfig: {
+            temperature,
+            maxOutputTokens: 1500,
+          },
+        }
 
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      })
+        if (systemInstruction) {
+          if (apiVersion === 'v1beta') {
+            payload.systemInstruction = {
+              parts: [{ text: systemInstruction }],
+            }
+          } else {
+            // En v1 se inyecta como primer mensaje de contexto
+            finalContents = [
+              {
+                role: 'user',
+                parts: [{ text: `[Instrucción de sistema]: ${systemInstruction}` }],
+              },
+              ...contents,
+            ]
+            payload.contents = finalContents
+          }
+        }
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}))
-        const errorMessage = errorData?.error?.message || `HTTP ${response.status}: ${response.statusText}`
-        throw new Error(`Google AI Studio error (${model}): ${errorMessage}`)
-      }
+        if (responseSchema && apiVersion === 'v1beta') {
+          (payload.generationConfig as Record<string, unknown>).responseMimeType = 'application/json';
+          (payload.generationConfig as Record<string, unknown>).responseSchema = responseSchema
+        }
 
-      const data = await response.json()
-      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text
+        const url = `https://generativelanguage.googleapis.com/${apiVersion}/models/${model}:generateContent?key=${resolvedKey}`
 
-      if (!text) {
-        throw new Error(`El modelo ${model} no generó ninguna respuesta de texto.`)
-      }
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': resolvedKey,
+          },
+          body: JSON.stringify(payload),
+        })
 
-      return text
-    } catch (err: unknown) {
-      lastError = err
-      const msg = err instanceof Error ? err.message : String(err)
-      console.warn(`Intento fallido con modelo ${model}:`, msg)
-      // Si el error es de clave inválida, no tiene sentido reintentar con otro modelo
-      if (msg.includes('API key not valid')) {
-        throw err
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}))
+          const errorMessage =
+            errorData?.error?.message || `HTTP ${response.status}: ${response.statusText}`
+
+          // Si la API key es inválida, detener de inmediato con mensaje claro
+          if (
+            errorMessage.includes('API key not valid') ||
+            errorMessage.includes('API_KEY_INVALID')
+          ) {
+            throw new Error('API Key de Google AI Studio inválida. Verifica tu clave en https://aistudio.google.com/app/apikey')
+          }
+
+          throw new Error(`(${apiVersion}/${model}): ${errorMessage}`)
+        }
+
+        const data = await response.json()
+        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text
+
+        if (!text) {
+          throw new Error(`El modelo ${model} no generó ninguna respuesta de texto.`)
+        }
+
+        // Modelo verificado con éxito, lo guardamos en caché
+        cachedWorkingModel = model
+        return text
+      } catch (err: unknown) {
+        lastError = err
+        const msg = err instanceof Error ? err.message : String(err)
+        console.warn(`Intento con ${apiVersion}/${model}:`, msg)
+        if (msg.includes('API Key de Google AI Studio inválida')) {
+          throw err
+        }
       }
     }
   }
 
-  throw (lastError instanceof Error ? lastError : new Error('No se pudo conectar con Google AI Studio.'))
+  throw (
+    lastError instanceof Error
+      ? lastError
+      : new Error('No se pudo conectar con los modelos disponibles de Google AI Studio. Verifica tu API Key.')
+  )
 }
 
 /**
@@ -159,7 +258,6 @@ export async function generateProductWithAI({
   const parts: GeminiMessagePart[] = []
 
   if (imageBase64) {
-    // Limpiar header de data URL si está presente
     const cleanBase64 = imageBase64.includes(',') ? imageBase64.split(',')[1] : imageBase64
     parts.push({
       inlineData: {
@@ -204,7 +302,7 @@ Devuelve ÚNICAMENTE un objeto JSON válido con la siguiente estructura exacta:
   parts.push({ text: promptText })
 
   const systemInstruction =
-    'Eres un experto en e-commerce y tasación de artículos de segunda mano y nuevos. Responde siempre en formato JSON estricto.'
+    'Eres un experto en e-commerce y tasación de artículos de segunda mano y nuevos. Responde siempre en formato JSON estricto sin markdown extra.'
 
   const responseText = await callGeminiApi({
     contents: [{ role: 'user', parts }],
@@ -213,7 +311,6 @@ Devuelve ÚNICAMENTE un objeto JSON válido con la siguiente estructura exacta:
     temperature: 0.4,
   })
 
-  // Parsear JSON limpio
   try {
     const cleaned = responseText.replace(/```json/gi, '').replace(/```/g, '').trim()
     const parsed = JSON.parse(cleaned)
@@ -227,7 +324,7 @@ Devuelve ÚNICAMENTE un objeto JSON válido con la siguiente estructura exacta:
       tags: Array.isArray(parsed.tags) ? parsed.tags : [],
       reasoning: parsed.reasoning || 'Generado automáticamente por Gemini AI.',
     }
-  } catch (err) {
+  } catch {
     console.error('Error parseando JSON de Gemini:', responseText)
     throw new Error('Gemini no devolvió un formato JSON válido. Intenta nuevamente.')
   }
@@ -270,7 +367,7 @@ Devuelve ÚNICAMENTE un objeto JSON válido con este formato:
 `
 
   const systemInstruction =
-    'Eres un perito y asistente de compras experto en marketplaces. Evalúa objetivamente la relación calidad-precio y riesgos.'
+    'Eres un perito y asistente de compras experto en marketplaces. Evalúa objetivamente la relación calidad-precio y riesgos. Responde en JSON estricto.'
 
   const responseText = await callGeminiApi({
     contents: [{ role: 'user', parts: [{ text: promptText }] }],
@@ -291,7 +388,7 @@ Devuelve ÚNICAMENTE un objeto JSON válido con este formato:
       buyerAdvice: parsed.buyerAdvice || 'Pregunta al vendedor por más fotos antes de concretar la compra.',
       fairPriceEstimate: parsed.fairPriceEstimate || `${price} €`,
     }
-  } catch (err) {
+  } catch {
     throw new Error('No se pudo analizar la publicación con IA.')
   }
 }
@@ -341,7 +438,6 @@ Reglas:
 
   const contents: GeminiContent[] = []
 
-  // Historial previo
   for (const h of history) {
     contents.push({
       role: h.role,
@@ -349,7 +445,6 @@ Reglas:
     })
   }
 
-  // Mensaje actual
   contents.push({
     role: 'user',
     parts: [{ text: message }],
